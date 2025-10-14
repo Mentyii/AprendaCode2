@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "563435707624",
+    "project_id": "aprendacode-f4cdb",
+    "storage_bucket": "aprendacode-f4cdb.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:563435707624:android:385f210e876827a3c53d5d",
+        "android_client_info": {
+          "package_name": "com.galaxies.firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "563435707624-t1jcicvhiov168bmp8vrlsb17bfh8r4h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDi1rzKgOp_NlwpuDrQXZdAPlwx1CNjE6Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "563435707624-t1jcicvhiov168bmp8vrlsb17bfh8r4h.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "563435707624-0v9k7iqtb0v04sr88bpf9mhunq4lmk6c.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.galaxies.firebase"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
