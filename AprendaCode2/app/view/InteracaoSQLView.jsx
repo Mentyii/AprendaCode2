@@ -1,46 +1,54 @@
-import { Text, View, ScrollView, TouchableOpacity, StyleSheet } from "react-native";
+import { Text, View, ScrollView, TouchableOpacity } from "react-native";
 import { useRouter } from 'expo-router';
 import * as Animatable from 'react-native-animatable';
 import { LinearGradient } from "expo-linear-gradient";
-import { styles } from "./IntroSQL"; // Importa estilos existentes
+import { styles } from "./IntroSQLView";
 
-export default function EstruturaSQL() {
+export default function InteracaoSQL() {
   const router = useRouter();
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       
-      {/* CARD 1 - Condicionais */}
+      {/* CARD 1 - O que é Interação com Usuário em SQL */}
       <Animatable.View animation="fadeInUp" delay={100} style={styles.card}>
-        <Text style={styles.titulo}>Condicionais com CASE</Text>
+        <Text style={styles.titulo}>Interação com o Usuário em SQL</Text>
         <Text style={styles.paragrafo}>
-          SQL não possui estruturas como `if`, mas usa o `CASE` para lógica condicional dentro das consultas.
+          Em ambientes mais avançados (como bancos com procedures ou aplicativos), podemos receber dados diretamente do usuário e usá-los em comandos SQL.
         </Text>
-        <Text style={styles.subtitulo}>Exemplo:</Text>
-        <View style={styles.codigo}>
-          <Text style={styles.paragrafo}>
-            {`SELECT nome,\n       CASE\n         WHEN idade >= 18 THEN 'Adulto'\n         ELSE 'Menor'\n       END AS categoria\nFROM usuarios;`}
-          </Text>
-        </View>
       </Animatable.View>
 
-      {/* CARD 2 - Repetições */}
+      {/* CARD 2 - Utilizando Parâmetros */}
       <Animatable.View animation="fadeInUp" delay={300} style={styles.card}>
-        <Text style={styles.titulo}>Estruturas de Repetição</Text>
+        <Text style={styles.titulo}>Usando Parâmetros em SQL</Text>
         <Text style={styles.paragrafo}>
-          O SQL padrão não possui laços como `for` ou `while`, mas você pode criar loops dentro de procedures ou scripts armazenados, dependendo do banco de dados.
+          Em aplicações web ou com scripts, geralmente os valores que o usuário informa são utilizados como parâmetros em instruções SQL.
         </Text>
-        <Text style={styles.subtitulo}>Exemplo de loop em PL/pgSQL (PostgreSQL):</Text>
-        <View style={styles.codigo}>
-          <Text style={styles.paragrafo}>
-            {`DO $$\nDECLARE\n  i INT := 1;\nBEGIN\n  WHILE i <= 5 LOOP\n    RAISE NOTICE 'Número: %', i;\n    i := i + 1;\n  END LOOP;\nEND$$;`}
-          </Text>
+        <Text style={styles.subtitulo}>Exemplo com parâmetro (em pseudo-código):</Text>
+        <Text style={styles.paragrafo}>
+          {`SELECT * FROM produtos WHERE preco <= :valorMax;`}
+        </Text>
+        <Text style={styles.paragrafo}>
+          Onde `:valorMax` representa o valor digitado pelo usuário.
+        </Text>
+      </Animatable.View>
+
+      {/* CARD 3 - Cuidados com Injeção de SQL */}
+      <Animatable.View animation="fadeInUp" delay={500} style={styles.card}>
+        <Text style={styles.titulo}>Segurança: Prevenindo SQL Injection</Text>
+        <Text style={styles.paragrafo}>
+          É essencial proteger os comandos SQL de ataques de injeção, validando os dados do usuário e nunca concatenando strings diretamente.
+        </Text>
+        <View style={styles.lista}>
+          <Text style={styles.itemLista}>• Sempre use prepared statements</Text>
+          <Text style={styles.itemLista}>• Evite executar strings montadas com dados diretos</Text>
+          <Text style={styles.itemLista}>• Utilize ORMs como Prisma, Sequelize ou Eloquent (em frameworks)</Text>
         </View>
       </Animatable.View>
 
       {/* Botões */}
       <Animatable.View animation="fadeInUp" delay={400} duration={600} style={{ gap: 12 }}>
-          <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_sql)/FuncoesSQL')}>
+          <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_sql)/ProjetosSQL')}>
               <LinearGradient
                   colors={["#43e97b", "#38f9d7"]}
                   start={{ x: 0, y: 0 }}
@@ -54,12 +62,12 @@ export default function EstruturaSQL() {
                   }}
               >
                   <Text style={{ color: "white", fontSize: 16, fontWeight: 'bold' }}>
-                  Próximo: Funções →
+                  Próximo: Projetos Práticos →
                   </Text>
               </LinearGradient>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_sql)/VariaveisSQL')}>
+          <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_sql)/ListasSQL')}>
               <LinearGradient
                   colors={["#43e97b", "#38f9d7"]}
                   start={{ x: 0, y: 0 }}
@@ -73,7 +81,7 @@ export default function EstruturaSQL() {
                   }}
               >
                   <Text style={{ color: "white", fontSize: 16, fontWeight: 'bold' }}>
-                  ← Anterior: Variáveis e Tipos
+                  ← Anterior: Tabelas, Listas e Relacionamentos
                   </Text>
               </LinearGradient>
           </TouchableOpacity>

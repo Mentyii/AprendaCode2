@@ -1,57 +1,59 @@
-import { Text, View, ScrollView, TouchableOpacity, Linking } from "react-native";
+import { Text, ScrollView, TouchableOpacity, View } from "react-native";
 import { useRouter } from 'expo-router';
-import { styles } from "../(modulos_python)/IntroPython";
+import { styles } from "../../IntroPython";
 import * as Animatable from 'react-native-animatable';
 import { LinearGradient } from "expo-linear-gradient";
 
-export default function sitesJS() {
+export default function VariaveisPy() {
   const router = useRouter();
-
-  const abrirLink = (url: string) => {
-    Linking.openURL(url);
-  };
 
   return (
     <ScrollView contentContainerStyle={[styles.container, { paddingBottom: 40 }]}>
-
-      <Animatable.View animation="fadeInUp" duration={500} style={[styles.card, {
+      
+      {/* Seção: Variáveis */}
+      <Animatable.View animation="fadeInUp" duration={600} style={[styles.card, {
         borderRadius: 12,
         padding: 16,
         marginBottom: 20,
         elevation: 2
       }]}>
         <Text style={[styles.titulo, { fontSize: 22, marginBottom: 10 }]}>
-          Sites para Praticar JavaScript
+          Variáveis em Python
+        </Text>
+        <View style={{ backgroundColor: "#1e1e1e", padding: 12, borderRadius: 8 }}>
+          <Text style={{ color: "#eee", fontFamily: "monospace" }}>
+            {`nome = "João"  # String\n`}
+            {`idade = 30    # Inteiro\n`}
+            {`ativo = True  # Booleano`}
+          </Text>
+        </View>
+      </Animatable.View>
+
+      {/* Seção: Operadores */}
+      <Animatable.View animation="fadeInUp" delay={200} duration={600} style={[styles.card, {
+        borderRadius: 12,
+        padding: 16,
+        marginBottom: 20,
+        elevation: 2
+      }]}>
+        <Text style={[styles.titulo, { fontSize: 22, marginBottom: 10 }]}>
+          Operadores
         </Text>
 
-        <Text style={[styles.paragrafo, { marginBottom: 10 }]}>
-          Aprender JavaScript exige prática. Aqui estão alguns sites que oferecem editores online, desafios e tutoriais gratuitos:
-        </Text>
+        <Text style={[styles.subtitulo, { marginTop: 6 }]}>Aritméticos:</Text>
+        <View style={{ backgroundColor: "#1e1e1e", padding: 8, borderRadius: 6, marginVertical: 6 }}>
+          <Text style={{ color: "#eee", fontFamily: "monospace" }}>{`+, -, *, /, %, **`}</Text>
+        </View>
 
-        <Text style={styles.itemLista} onPress={() => abrirLink("https://www.w3schools.com")}>
-          • <Text style={styles.codigoInline}>W3Schools</Text> – Tutoriais e playground online.
-        </Text>
-
-        <Text style={styles.itemLista} onPress={() => abrirLink("https://www.freecodecamp.org")}>
-          • <Text style={styles.codigoInline}>FreeCodeCamp</Text> – Curso completo com certificação gratuita.
-        </Text>
-
-        <Text style={styles.itemLista} onPress={() => abrirLink("https://codepen.io")}>
-          • <Text style={styles.codigoInline}>CodePen</Text> – Editor colaborativo para HTML, CSS e JS.
-        </Text>
-
-        <Text style={styles.itemLista} onPress={() => abrirLink("https://jsfiddle.net")}>
-          • <Text style={styles.codigoInline}>JSFiddle</Text> – Teste e compartilhe pequenos projetos.
-        </Text>
-
-        <Text style={styles.itemLista} onPress={() => abrirLink("https://replit.com")}>
-          • <Text style={styles.codigoInline}>Replit</Text> – Editor online com execução de código em tempo real.
-        </Text>
+        <Text style={[styles.subtitulo, { marginTop: 10 }]}>Comparação:</Text>
+        <View style={{ backgroundColor: "#1e1e1e", padding: 8, borderRadius: 6, marginVertical: 6 }}>
+          <Text style={{ color: "#eee", fontFamily: "monospace" }}>{`==, !=, >, <, >=, <=`}</Text>
+        </View>
       </Animatable.View>
 
       {/* Botões */}
-      <Animatable.View animation="fadeInUp" delay={400} duration={600} style={{ gap: 12 }}>
-        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_js)/quizJS')}>
+      <Animatable.View animation="fadeInUp" duration={500} delay={400} style={{ gap: 12 }}>
+        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_python)/EstruturasPy')}>
           <LinearGradient
             colors={["#43e97b", "#38f9d7"]}
             start={{ x: 0, y: 0 }}
@@ -65,12 +67,12 @@ export default function sitesJS() {
             }}
           >
             <Text style={{ color: "white", fontSize: 16, fontWeight: 'bold' }}>
-              Próximo: Quiz →
+              Próximo: Estruturas de Controle →
             </Text>
           </LinearGradient>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_js)/praticaJS')}>
+        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_python)/BasicoPy')}>
           <LinearGradient
             colors={["#43e97b", "#38f9d7"]}
             start={{ x: 0, y: 0 }}
@@ -84,7 +86,7 @@ export default function sitesJS() {
             }}
           >
             <Text style={{ color: "white", fontSize: 16, fontWeight: 'bold' }}>
-              ← Anterior: Projeto Prático
+              ← Anterior: Básico do Python
             </Text>
           </LinearGradient>
         </TouchableOpacity>
@@ -108,6 +110,7 @@ export default function sitesJS() {
           </LinearGradient>
         </TouchableOpacity>
       </Animatable.View>
+
     </ScrollView>
   );
 }

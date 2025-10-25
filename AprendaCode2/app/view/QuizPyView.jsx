@@ -1,7 +1,7 @@
 import { Text, View, ScrollView, TouchableOpacity } from "react-native";
 import { useState } from "react";
 import { useRouter } from 'expo-router';
-import { styles } from "./IntroPython";
+import { styles } from "../../IntroPython";
 import * as Animatable from 'react-native-animatable';
 import { LinearGradient } from "expo-linear-gradient";
 

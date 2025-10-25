@@ -1,16 +1,16 @@
 import { Text, View, ScrollView, TouchableOpacity } from "react-native";
 import { useRouter } from 'expo-router';
-import { styles } from "../(modulos_python)/IntroPython";
+import { styles } from "../../IntroPython"
 import * as Animatable from 'react-native-animatable';
 import { LinearGradient } from "expo-linear-gradient";
 
-export default function objetosJS() {
+export default function domJS() {
   const router = useRouter();
 
   return (
     <ScrollView contentContainerStyle={[styles.container, { paddingBottom: 40}]}>
 
-      {/* Arrays em JavaScript */}
+      {/* DOM - Document Object Model */}
       <Animatable.View animation="fadeInUp" duration={500} style={[styles.card, {
         borderRadius: 12,
         padding: 16,
@@ -18,29 +18,28 @@ export default function objetosJS() {
         elevation: 2
       }]}>
         <Text style={[styles.titulo, { fontSize: 22, marginBottom: 10 }]}>
-          Arrays em JavaScript
+          DOM – Document Object Model
         </Text>
 
         <Text style={[styles.paragrafo, { marginBottom: 10 }]}>
-          Um array é uma lista ordenada de elementos. Os itens são acessados por índice, começando do 0.
+          O DOM permite interagir com elementos HTML através do JavaScript, alterando conteúdos e reagindo a eventos.
         </Text>
 
         <View style={{ backgroundColor: "#1e1e1e", padding: 12, borderRadius: 8, marginBottom: 12 }}>
           <Text style={{ color: "#eee", fontFamily: "monospace" }}>
-            {`let frutas = ["maçã", "banana", "laranja"];\n`}
-            {`console.log(frutas[1]);  // banana\n`}
-            {`frutas.push("uva");  // adiciona ao final\n`}
-            {`console.log(frutas);  // ["maçã", "banana", "laranja", "uva"]`}
+            {`document.getElementById("titulo").innerText = "Novo Título";`}
           </Text>
         </View>
 
-        <Text style={[styles.subtitulo, { marginBottom: 8 }]}>Operações Comuns:</Text>
-        <Text style={styles.itemLista}>• <Text style={styles.codigoInline}>frutas.length</Text>: Retorna a quantidade de elementos</Text>
-        <Text style={styles.itemLista}>• <Text style={styles.codigoInline}>frutas.slice(1, 3)</Text>: Retorna ["banana", "laranja"]</Text>
-        <Text style={styles.itemLista}>• <Text style={styles.codigoInline}>frutas.splice(1, 1)</Text>: Remove "banana"</Text>
+        <Text style={styles.itemLista}>
+          • <Text style={styles.codigoInline}>getElementById</Text>: Busca um elemento pelo seu <Text style={styles.codigoInline}>id</Text>.
+        </Text>
+        <Text style={styles.itemLista}>
+          • <Text style={styles.codigoInline}>innerText</Text>: Altera o texto exibido no elemento.
+        </Text>
       </Animatable.View>
 
-      {/* Objetos em JavaScript */}
+      {/* Eventos com addEventListener */}
       <Animatable.View animation="fadeInUp" duration={600} delay={200} style={[styles.card, {
         borderRadius: 12,
         padding: 16,
@@ -48,36 +47,32 @@ export default function objetosJS() {
         elevation: 2
       }]}>
         <Text style={[styles.titulo, { fontSize: 22, marginBottom: 10 }]}>
-          Objetos em JavaScript
+          Eventos com addEventListener
         </Text>
 
         <Text style={[styles.paragrafo, { marginBottom: 10 }]}>
-          Objetos agrupam dados usando pares chave-valor. Também podem conter métodos, que são funções internas.
+          Podemos escutar eventos nos elementos e executar funções quando eles ocorrem, como um clique de botão:
         </Text>
 
         <View style={{ backgroundColor: "#1e1e1e", padding: 12, borderRadius: 8, marginBottom: 12 }}>
           <Text style={{ color: "#eee", fontFamily: "monospace" }}>
-            {`let pessoa = {\n`}
-            {`  nome: "Maria",\n`}
-            {`  idade: 25,\n`}
-            {`  saudacao() {\n`}
-            {`    return \`Oi, meu nome é \${this.nome}\`;\n`}
-            {`  }\n`}
-            {`};\n\n`}
-            {`console.log(pessoa.nome);       // Maria\n`}
-            {`console.log(pessoa.saudacao()); // Oi, meu nome é Maria`}
+            {`document.getElementById("btn").addEventListener("click", () => {\n`}
+            {`  alert("Botão clicado!");\n`}
+            {`});`}
           </Text>
         </View>
 
-        <Text style={[styles.subtitulo, { marginBottom: 8 }]}>Acessos e Métodos:</Text>
-        <Text style={styles.itemLista}>• <Text style={styles.codigoInline}>pessoa.nome</Text>: Acessa o valor da chave "nome"</Text>
-        <Text style={styles.itemLista}>• <Text style={styles.codigoInline}>pessoa["idade"]</Text>: Acessa usando string</Text>
-        <Text style={styles.itemLista}>• <Text style={styles.codigoInline}>pessoa.email = "maria@exemplo.com"</Text>: Adiciona nova chave</Text>
+        <Text style={styles.itemLista}>
+          • <Text style={styles.codigoInline}>addEventListener("click", callback)</Text>: Executa a função quando o elemento for clicado.
+        </Text>
+        <Text style={styles.itemLista}>
+          • <Text style={styles.codigoInline}>alert()</Text>: Exibe uma mensagem ao usuário.
+        </Text>
       </Animatable.View>
 
       {/* Botões */}
       <Animatable.View animation="fadeInUp" duration={500} delay={400} style={{ gap: 12 }}>
-        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_js)/domJS')}>
+        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_js)/praticaJS')}>
           <LinearGradient
             colors={["#43e97b", "#38f9d7"]}
             start={{ x: 0, y: 0 }}
@@ -91,12 +86,12 @@ export default function objetosJS() {
             }}
           >
             <Text style={{ color: "white", fontSize: 16, fontWeight: 'bold' }}>
-              Próximo: DOM - Document Object Model →
+              Próximo: Projeto Prático →
             </Text>
           </LinearGradient>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_js)/funcoesJS')}>
+        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_js)/objetosJS')}>
           <LinearGradient
             colors={["#43e97b", "#38f9d7"]}
             start={{ x: 0, y: 0 }}
@@ -110,7 +105,7 @@ export default function objetosJS() {
             }}
           >
             <Text style={{ color: "white", fontSize: 16, fontWeight: 'bold' }}>
-              ← Anterior: Funções
+              ← Anterior: Arrays e Objetos
             </Text>
           </LinearGradient>
         </TouchableOpacity>

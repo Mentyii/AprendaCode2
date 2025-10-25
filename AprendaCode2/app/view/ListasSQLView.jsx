@@ -2,64 +2,62 @@ import { Text, View, ScrollView, TouchableOpacity } from "react-native";
 import { useRouter } from 'expo-router';
 import * as Animatable from 'react-native-animatable';
 import { LinearGradient } from "expo-linear-gradient";
-import { styles } from "./IntroSQL";
+import { styles } from "../../IntroSQL";
 
-export default function VariaveisSQL() {
+export default function ListasSQL() {
   const router = useRouter();
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       
-      {/* CARD 1 */}
+      {/* CARD 1 - Tabelas e Estrutura Relacional */}
       <Animatable.View animation="fadeInUp" delay={100} style={styles.card}>
-        <Text style={styles.titulo}>Tipos de Dados em SQL</Text>
+        <Text style={styles.titulo}>Tabelas e Relacionamentos</Text>
         <Text style={styles.paragrafo}>
-          SQL não possui "variáveis" como em linguagens de programação tradicionais, mas trabalha com diferentes tipos de dados armazenados em colunas das tabelas.
+          Em bancos de dados relacionais, os dados são organizados em tabelas. Cada tabela possui colunas (campos) e linhas (registros).
         </Text>
-        <Text style={styles.subtitulo}>Tipos mais comuns:</Text>
-        <View style={styles.lista}>
-          <Text style={styles.itemLista}>• INT – Números inteiros</Text>
-          <Text style={styles.itemLista}>• VARCHAR(n) – Texto com limite de caracteres</Text>
-          <Text style={styles.itemLista}>• TEXT – Texto longo</Text>
-          <Text style={styles.itemLista}>• DATE – Data (YYYY-MM-DD)</Text>
-          <Text style={styles.itemLista}>• BOOLEAN – Verdadeiro ou Falso</Text>
-          <Text style={styles.itemLista}>• FLOAT/DOUBLE – Números decimais</Text>
-        </View>
+        <Text style={styles.subtitulo}>Exemplo:</Text>
+        <Text style={styles.paragrafo}>
+          Uma tabela `clientes` pode ter: `id`, `nome`, `email`, `cidade_id`.
+        </Text>
       </Animatable.View>
 
-      {/* CARD 2 */}
+      {/* CARD 2 - Chaves Primárias e Estrangeiras */}
       <Animatable.View animation="fadeInUp" delay={300} style={styles.card}>
-        <Text style={styles.titulo}>Exemplo de Criação de Tabela</Text>
-        <Text style={styles.paragrafo}>Veja como definir tipos ao criar uma tabela:</Text>
-        <View style={styles.codigo}>
-          <Text style={{color: "#FFF", fontFamily: "monospace" }}>
-            {`CREATE TABLE usuarios (
-              id INT PRIMARY KEY,
-              nome VARCHAR(50),
-              email VARCHAR(100),
-              data_cadastro DATE,
-              ativo BOOLEAN
-            );`}
-          </Text>
-        </View>
+        <Text style={styles.titulo}>Chaves Primárias e Estrangeiras</Text>
+        <Text style={styles.paragrafo}>
+          • A chave primária identifica exclusivamente cada linha em uma tabela (ex: `id`).
+        </Text>
+        <Text style={styles.paragrafo}>
+          • A chave estrangeira (`foreign key`) faz referência a uma chave primária em outra tabela.
+        </Text>
+        <Text style={styles.subtitulo}>Exemplo de relacionamento:</Text>
+        <Text style={styles.paragrafo}>
+          A tabela `clientes` pode ter uma chave estrangeira `cidade_id` que se refere à tabela `cidades`.
+        </Text>
       </Animatable.View>
 
-      {/* CARD 3 */}
+      {/* CARD 3 - JOINs */}
       <Animatable.View animation="fadeInUp" delay={500} style={styles.card}>
-        <Text style={styles.titulo}>Conversão de Tipos</Text>
+        <Text style={styles.titulo}>Comandos JOIN</Text>
         <Text style={styles.paragrafo}>
-          É possível converter tipos usando funções como `CAST()` ou `CONVERT()`:
+          JOINs permitem combinar dados de múltiplas tabelas com base em relações entre elas.
         </Text>
+        <View style={styles.lista}>
+          <Text style={styles.itemLista}>• INNER JOIN – retorna apenas dados que se relacionam nas duas tabelas</Text>
+          <Text style={styles.itemLista}>• LEFT JOIN – retorna todos da esquerda, mesmo sem correspondência à direita</Text>
+        </View>
+        <Text style={styles.subtitulo}>Exemplo:</Text>
         <View style={styles.codigo}>
-          <Text style={{ fontFamily: "monospace", color: "#FFF" }}>
-            {`SELECT CAST('2024-06-01' AS DATE);`}
+          <Text style={styles.paragrafo}>
+            {`SELECT clientes.nome, cidades.nome\nFROM clientes\nINNER JOIN cidades ON clientes.cidade_id = cidades.id;`}
           </Text>
         </View>
       </Animatable.View>
 
       {/* Botões */}
       <Animatable.View animation="fadeInUp" delay={400} duration={600} style={{ gap: 12 }}>
-          <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_sql)/EstruturaSQL')}>
+          <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_sql)/InteracaoSQL')}>
               <LinearGradient
                   colors={["#43e97b", "#38f9d7"]}
                   start={{ x: 0, y: 0 }}
@@ -73,12 +71,12 @@ export default function VariaveisSQL() {
                   }}
               >
                   <Text style={{ color: "white", fontSize: 16, fontWeight: 'bold' }}>
-                  Próximo: Estruturas de Controle →
+                  Próximo: Interação com Usuário →
                   </Text>
               </LinearGradient>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_sql)/BasicoSQL')}>
+          <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_sql)/FuncoesSQL')}>
               <LinearGradient
                   colors={["#43e97b", "#38f9d7"]}
                   start={{ x: 0, y: 0 }}
@@ -92,7 +90,7 @@ export default function VariaveisSQL() {
                   }}
               >
                   <Text style={{ color: "white", fontSize: 16, fontWeight: 'bold' }}>
-                  ← Anterior: Básico do SQL
+                  ← Anterior: Funções
                   </Text>
               </LinearGradient>
           </TouchableOpacity>

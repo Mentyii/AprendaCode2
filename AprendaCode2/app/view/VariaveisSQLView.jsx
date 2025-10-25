@@ -2,53 +2,64 @@ import { Text, View, ScrollView, TouchableOpacity } from "react-native";
 import { useRouter } from 'expo-router';
 import * as Animatable from 'react-native-animatable';
 import { LinearGradient } from "expo-linear-gradient";
-import { styles } from "./IntroSQL";
+import { styles } from "../../IntroSQL";
 
-export default function InteracaoSQL() {
+export default function VariaveisSQL() {
   const router = useRouter();
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       
-      {/* CARD 1 - O que é Interação com Usuário em SQL */}
+      {/* CARD 1 */}
       <Animatable.View animation="fadeInUp" delay={100} style={styles.card}>
-        <Text style={styles.titulo}>Interação com o Usuário em SQL</Text>
+        <Text style={styles.titulo}>Tipos de Dados em SQL</Text>
         <Text style={styles.paragrafo}>
-          Em ambientes mais avançados (como bancos com procedures ou aplicativos), podemos receber dados diretamente do usuário e usá-los em comandos SQL.
+          SQL não possui "variáveis" como em linguagens de programação tradicionais, mas trabalha com diferentes tipos de dados armazenados em colunas das tabelas.
         </Text>
-      </Animatable.View>
-
-      {/* CARD 2 - Utilizando Parâmetros */}
-      <Animatable.View animation="fadeInUp" delay={300} style={styles.card}>
-        <Text style={styles.titulo}>Usando Parâmetros em SQL</Text>
-        <Text style={styles.paragrafo}>
-          Em aplicações web ou com scripts, geralmente os valores que o usuário informa são utilizados como parâmetros em instruções SQL.
-        </Text>
-        <Text style={styles.subtitulo}>Exemplo com parâmetro (em pseudo-código):</Text>
-        <Text style={styles.paragrafo}>
-          {`SELECT * FROM produtos WHERE preco <= :valorMax;`}
-        </Text>
-        <Text style={styles.paragrafo}>
-          Onde `:valorMax` representa o valor digitado pelo usuário.
-        </Text>
-      </Animatable.View>
-
-      {/* CARD 3 - Cuidados com Injeção de SQL */}
-      <Animatable.View animation="fadeInUp" delay={500} style={styles.card}>
-        <Text style={styles.titulo}>Segurança: Prevenindo SQL Injection</Text>
-        <Text style={styles.paragrafo}>
-          É essencial proteger os comandos SQL de ataques de injeção, validando os dados do usuário e nunca concatenando strings diretamente.
-        </Text>
+        <Text style={styles.subtitulo}>Tipos mais comuns:</Text>
         <View style={styles.lista}>
-          <Text style={styles.itemLista}>• Sempre use prepared statements</Text>
-          <Text style={styles.itemLista}>• Evite executar strings montadas com dados diretos</Text>
-          <Text style={styles.itemLista}>• Utilize ORMs como Prisma, Sequelize ou Eloquent (em frameworks)</Text>
+          <Text style={styles.itemLista}>• INT – Números inteiros</Text>
+          <Text style={styles.itemLista}>• VARCHAR(n) – Texto com limite de caracteres</Text>
+          <Text style={styles.itemLista}>• TEXT – Texto longo</Text>
+          <Text style={styles.itemLista}>• DATE – Data (YYYY-MM-DD)</Text>
+          <Text style={styles.itemLista}>• BOOLEAN – Verdadeiro ou Falso</Text>
+          <Text style={styles.itemLista}>• FLOAT/DOUBLE – Números decimais</Text>
+        </View>
+      </Animatable.View>
+
+      {/* CARD 2 */}
+      <Animatable.View animation="fadeInUp" delay={300} style={styles.card}>
+        <Text style={styles.titulo}>Exemplo de Criação de Tabela</Text>
+        <Text style={styles.paragrafo}>Veja como definir tipos ao criar uma tabela:</Text>
+        <View style={styles.codigo}>
+          <Text style={{color: "#FFF", fontFamily: "monospace" }}>
+            {`CREATE TABLE usuarios (
+              id INT PRIMARY KEY,
+              nome VARCHAR(50),
+              email VARCHAR(100),
+              data_cadastro DATE,
+              ativo BOOLEAN
+            );`}
+          </Text>
+        </View>
+      </Animatable.View>
+
+      {/* CARD 3 */}
+      <Animatable.View animation="fadeInUp" delay={500} style={styles.card}>
+        <Text style={styles.titulo}>Conversão de Tipos</Text>
+        <Text style={styles.paragrafo}>
+          É possível converter tipos usando funções como `CAST()` ou `CONVERT()`:
+        </Text>
+        <View style={styles.codigo}>
+          <Text style={{ fontFamily: "monospace", color: "#FFF" }}>
+            {`SELECT CAST('2024-06-01' AS DATE);`}
+          </Text>
         </View>
       </Animatable.View>
 
       {/* Botões */}
       <Animatable.View animation="fadeInUp" delay={400} duration={600} style={{ gap: 12 }}>
-          <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_sql)/ProjetosSQL')}>
+          <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_sql)/EstruturaSQL')}>
               <LinearGradient
                   colors={["#43e97b", "#38f9d7"]}
                   start={{ x: 0, y: 0 }}
@@ -62,12 +73,12 @@ export default function InteracaoSQL() {
                   }}
               >
                   <Text style={{ color: "white", fontSize: 16, fontWeight: 'bold' }}>
-                  Próximo: Projetos Práticos →
+                  Próximo: Estruturas de Controle →
                   </Text>
               </LinearGradient>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_sql)/ListasSQL')}>
+          <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_sql)/BasicoSQL')}>
               <LinearGradient
                   colors={["#43e97b", "#38f9d7"]}
                   start={{ x: 0, y: 0 }}
@@ -81,7 +92,7 @@ export default function InteracaoSQL() {
                   }}
               >
                   <Text style={{ color: "white", fontSize: 16, fontWeight: 'bold' }}>
-                  ← Anterior: Tabelas, Listas e Relacionamentos
+                  ← Anterior: Básico do SQL
                   </Text>
               </LinearGradient>
           </TouchableOpacity>

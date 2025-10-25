@@ -1,43 +1,53 @@
 import { Text, View, ScrollView, TouchableOpacity } from "react-native";
 import { useState } from "react";
 import { useRouter } from 'expo-router';
-import { styles } from "./IntroHTML";
+import { styles } from "../../IntroCSS";
 import * as Animatable from 'react-native-animatable';
 import { LinearGradient } from "expo-linear-gradient";
 
-export default function QuizH() {
+export default function QuizC() {
   const router = useRouter();
 
   const perguntas = [
   {
-    enunciado: "1. Qual elemento HTML é usado para criar um parágrafo?",
-    opcoes: ["<h1>", "<p>", "<br>", "<div>"],
-    correta: 1,
-  },
-  {
-    enunciado: "2. Qual atributo HTML é usado para definir um link de destino em uma tag <a>?",
-    opcoes: ["src", "href", "link", "target"],
-    correta: 1,
-  },
-  {
-    enunciado: "3. Qual dessas tags é usada para exibir uma imagem em HTML?",
-    opcoes: ["<image>", "<img>", "<pic>", "<photo>"],
-    correta: 1,
-  },
-  {
-    enunciado: "4. Qual elemento HTML é usado para criar uma lista não ordenada?",
-    opcoes: ["<ul>", "<ol>", "<li>", "<list>"],
-    correta: 0,
-  },
-  {
-    enunciado: "5. Qual tag HTML é usada para definir o título da página que aparece na aba do navegador?",
-    opcoes: ["<header>", "<meta>", "<title>", "<head>"],
+    enunciado: "1. Qual propriedade CSS é usada para mudar a cor do texto?",
+    opcoes: ["font-color", "text-color", "color", "background-color"],
     correta: 2,
   },
   {
-    enunciado: "6. Qual elemento é usado para criar um campo de entrada de texto em um formulário HTML?",
-    opcoes: ["<input>", "<text>", "<textarea>", "<field>"],
+    enunciado: "2. Qual seletor é usado para selecionar um elemento com a classe 'container'?",
+    opcoes: ["#container", ".container", "container", "<container>"],
+    correta: 1,
+  },
+  {
+    enunciado: "3. Qual propriedade CSS controla o espaçamento interno de um elemento?",
+    opcoes: ["margin", "padding", "border", "spacing"],
+    correta: 1,
+  },
+  {
+    enunciado: "4. O que significa a propriedade 'display: flex;' em CSS?",
+    opcoes: [
+      "Oculta o elemento",
+      "Cria um layout flexível (Flexbox)",
+      "Define o tamanho da fonte",
+      "Adiciona uma margem automática",
+    ],
+    correta: 1,
+  },
+  {
+    enunciado: "5. Como se aplica uma cor de fundo em CSS?",
+    opcoes: [
+      "background-color: blue;",
+      "color-background: blue;",
+      "bgcolor: blue;",
+      "background: text-blue;",
+    ],
     correta: 0,
+  },
+  {
+    enunciado: "6. Qual propriedade define a largura de um elemento?",
+    opcoes: ["height", "size", "width", "length"],
+    correta: 2,
   },
 ];
 
@@ -81,7 +91,8 @@ export default function QuizH() {
 
       {/* Botões */}
       <Animatable.View animation="fadeInUp" duration={500} delay={400} style={{ gap: 12 }}>
-        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_html)/IntroH')}>
+
+        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_css)/IntroC')}>
           <LinearGradient
               colors={["#43e97b", "#38f9d7"]}
               start={{ x: 0, y: 0 }}
@@ -95,28 +106,28 @@ export default function QuizH() {
               }}
           >
               <Text style={{ color: "white", fontSize: 16, fontWeight: 'bold' }}>
-                🌟 Voltar aos Módulos de HTML →
+                🌟 Voltar aos Módulos de CSS →
               </Text>
           </LinearGradient>
         </TouchableOpacity>
-        
-        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_html)/BasicoH')}>
-            <LinearGradient
-                colors={["#43e97b", "#38f9d7"]}
-                start={{ x: 0, y: 0 }}
-                end={{ x: 1, y: 0 }}
-                style={{
-                paddingVertical: 14,
-                paddingHorizontal: 24,
-                borderRadius: 30,
-                alignItems: 'center',
-                elevation: 3
-                }}
-            >
-                <Text style={{ color: "white", fontSize: 16, fontWeight: 'bold' }}>
-                ← Anterior: Básico do HTML
-                </Text>
-            </LinearGradient>
+
+        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_css)/BasicoC')}>
+          <LinearGradient
+              colors={["#43e97b", "#38f9d7"]}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+              style={{
+              paddingVertical: 14,
+              paddingHorizontal: 24,
+              borderRadius: 30,
+              alignItems: 'center',
+              elevation: 3
+              }}
+          >
+              <Text style={{ color: "white", fontSize: 16, fontWeight: 'bold' }}>
+              ← Anterior: Básico do CSS
+              </Text>
+          </LinearGradient>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => router.push('/(tabs)/topicos')}>

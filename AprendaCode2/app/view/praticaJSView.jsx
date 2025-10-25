@@ -1,16 +1,16 @@
 import { Text, View, ScrollView, TouchableOpacity } from "react-native";
 import { useRouter } from 'expo-router';
-import { styles } from "../(modulos_python)/IntroPython"
+import { styles } from "../../IntroPython";
 import * as Animatable from 'react-native-animatable';
 import { LinearGradient } from "expo-linear-gradient";
 
-export default function domJS() {
+export default function praticaJS() {
   const router = useRouter();
 
   return (
     <ScrollView contentContainerStyle={[styles.container, { paddingBottom: 40}]}>
 
-      {/* DOM - Document Object Model */}
+      {/* Projeto ToDo List - HTML */}
       <Animatable.View animation="fadeInUp" duration={500} style={[styles.card, {
         borderRadius: 12,
         padding: 16,
@@ -18,61 +18,67 @@ export default function domJS() {
         elevation: 2
       }]}>
         <Text style={[styles.titulo, { fontSize: 22, marginBottom: 10 }]}>
-          DOM – Document Object Model
+          Projeto Prático – ToDo List
         </Text>
 
         <Text style={[styles.paragrafo, { marginBottom: 10 }]}>
-          O DOM permite interagir com elementos HTML através do JavaScript, alterando conteúdos e reagindo a eventos.
+          Um projeto simples em HTML e JavaScript para treinar manipulação do DOM e eventos.
         </Text>
 
+        <Text style={[styles.subtitulo, { marginBottom: 6 }]}>HTML:</Text>
         <View style={{ backgroundColor: "#1e1e1e", padding: 12, borderRadius: 8, marginBottom: 12 }}>
           <Text style={{ color: "#eee", fontFamily: "monospace" }}>
-            {`document.getElementById("titulo").innerText = "Novo Título";`}
+            {`<input id="tarefa" type="text"> \n`}
+            {`<button onclick="adicionar()">Adicionar</button>\n`}
+            {`<ul id="lista"></ul>`}
           </Text>
         </View>
 
         <Text style={styles.itemLista}>
-          • <Text style={styles.codigoInline}>getElementById</Text>: Busca um elemento pelo seu <Text style={styles.codigoInline}>id</Text>.
+          • <Text style={styles.codigoInline}>input</Text>: Campo de texto para digitar a tarefa.
         </Text>
         <Text style={styles.itemLista}>
-          • <Text style={styles.codigoInline}>innerText</Text>: Altera o texto exibido no elemento.
+          • <Text style={styles.codigoInline}>button</Text>: Executa a função <Text style={styles.codigoInline}>adicionar()</Text>.
+        </Text>
+        <Text style={styles.itemLista}>
+          • <Text style={styles.codigoInline}>ul</Text>: Lista que exibirá as tarefas adicionadas.
         </Text>
       </Animatable.View>
 
-      {/* Eventos com addEventListener */}
+      {/* Projeto ToDo List - JavaScript */}
       <Animatable.View animation="fadeInUp" duration={600} delay={200} style={[styles.card, {
         borderRadius: 12,
         padding: 16,
         marginBottom: 20,
         elevation: 2
       }]}>
-        <Text style={[styles.titulo, { fontSize: 22, marginBottom: 10 }]}>
-          Eventos com addEventListener
-        </Text>
-
-        <Text style={[styles.paragrafo, { marginBottom: 10 }]}>
-          Podemos escutar eventos nos elementos e executar funções quando eles ocorrem, como um clique de botão:
-        </Text>
+        <Text style={[styles.subtitulo, { fontSize: 20, marginBottom: 10 }]}>JavaScript:</Text>
 
         <View style={{ backgroundColor: "#1e1e1e", padding: 12, borderRadius: 8, marginBottom: 12 }}>
           <Text style={{ color: "#eee", fontFamily: "monospace" }}>
-            {`document.getElementById("btn").addEventListener("click", () => {\n`}
-            {`  alert("Botão clicado!");\n`}
-            {`});`}
+            {`function adicionar() {\n`}
+            {`  const texto = document.getElementById("tarefa").value;\n`}
+            {`  const item = document.createElement("li");\n`}
+            {`  item.innerText = texto;\n`}
+            {`  document.getElementById("lista").appendChild(item);\n`}
+            {`}`}
           </Text>
         </View>
 
         <Text style={styles.itemLista}>
-          • <Text style={styles.codigoInline}>addEventListener("click", callback)</Text>: Executa a função quando o elemento for clicado.
+          • Captura o valor digitado no campo.
         </Text>
         <Text style={styles.itemLista}>
-          • <Text style={styles.codigoInline}>alert()</Text>: Exibe uma mensagem ao usuário.
+          • Cria um novo elemento <Text style={styles.codigoInline}>li</Text>.
+        </Text>
+        <Text style={styles.itemLista}>
+          • Adiciona o novo item à lista usando <Text style={styles.codigoInline}>appendChild()</Text>.
         </Text>
       </Animatable.View>
 
       {/* Botões */}
       <Animatable.View animation="fadeInUp" duration={500} delay={400} style={{ gap: 12 }}>
-        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_js)/praticaJS')}>
+        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_js)/sitesJS')}>
           <LinearGradient
             colors={["#43e97b", "#38f9d7"]}
             start={{ x: 0, y: 0 }}
@@ -86,12 +92,12 @@ export default function domJS() {
             }}
           >
             <Text style={{ color: "white", fontSize: 16, fontWeight: 'bold' }}>
-              Próximo: Projeto Prático →
+              Próximo: Sites para Prática →
             </Text>
           </LinearGradient>
         </TouchableOpacity>
-
-        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_js)/objetosJS')}>
+        
+        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_js)/domJS')}>
           <LinearGradient
             colors={["#43e97b", "#38f9d7"]}
             start={{ x: 0, y: 0 }}
@@ -105,7 +111,7 @@ export default function domJS() {
             }}
           >
             <Text style={{ color: "white", fontSize: 16, fontWeight: 'bold' }}>
-              ← Anterior: Arrays e Objetos
+              ← Anterior: DOM - Document Object Model
             </Text>
           </LinearGradient>
         </TouchableOpacity>

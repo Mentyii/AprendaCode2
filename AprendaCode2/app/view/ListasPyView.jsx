@@ -1,16 +1,16 @@
 import { Text, View, ScrollView, TouchableOpacity } from "react-native";
 import { useRouter } from 'expo-router';
-import { styles } from "../(modulos_python)/IntroPython";
+import { styles } from "../../IntroPython";
 import * as Animatable from 'react-native-animatable';
 import { LinearGradient } from "expo-linear-gradient";
 
-export default function praticaJS() {
+export default function ListasPy() {
   const router = useRouter();
 
   return (
-    <ScrollView contentContainerStyle={[styles.container, { paddingBottom: 40}]}>
-
-      {/* Projeto ToDo List - HTML */}
+    <ScrollView contentContainerStyle={[styles.container, { paddingBottom: 40 }]}>
+      
+      {/* Listas */}
       <Animatable.View animation="fadeInUp" duration={500} style={[styles.card, {
         borderRadius: 12,
         padding: 16,
@@ -18,67 +18,64 @@ export default function praticaJS() {
         elevation: 2
       }]}>
         <Text style={[styles.titulo, { fontSize: 22, marginBottom: 10 }]}>
-          Projeto Prático – ToDo List
+          Listas em Python
         </Text>
 
         <Text style={[styles.paragrafo, { marginBottom: 10 }]}>
-          Um projeto simples em HTML e JavaScript para treinar manipulação do DOM e eventos.
+          Coleções ordenadas e mutáveis de itens:
         </Text>
 
-        <Text style={[styles.subtitulo, { marginBottom: 6 }]}>HTML:</Text>
         <View style={{ backgroundColor: "#1e1e1e", padding: 12, borderRadius: 8, marginBottom: 12 }}>
           <Text style={{ color: "#eee", fontFamily: "monospace" }}>
-            {`<input id="tarefa" type="text"> \n`}
-            {`<button onclick="adicionar()">Adicionar</button>\n`}
-            {`<ul id="lista"></ul>`}
+            {`frutas = ["maçã", "banana", "laranja"]\n`}
+            {`print(frutas[1])  # banana (índice começa em 0)\n`}
+            {`frutas.append("uva")  # Adiciona ao final\n`}
+            {`print(frutas)  # ["maçã", "banana", "laranja", "uva"]`}
           </Text>
         </View>
 
-        <Text style={styles.itemLista}>
-          • <Text style={styles.codigoInline}>input</Text>: Campo de texto para digitar a tarefa.
-        </Text>
-        <Text style={styles.itemLista}>
-          • <Text style={styles.codigoInline}>button</Text>: Executa a função <Text style={styles.codigoInline}>adicionar()</Text>.
-        </Text>
-        <Text style={styles.itemLista}>
-          • <Text style={styles.codigoInline}>ul</Text>: Lista que exibirá as tarefas adicionadas.
-        </Text>
+        <Text style={[styles.subtitulo, { marginBottom: 8 }]}>Operações Comuns:</Text>
+        <Text style={styles.itemLista}>• <Text style={styles.codigoInline}>len(frutas)</Text>: Retorna 4</Text>
+        <Text style={styles.itemLista}>• <Text style={styles.codigoInline}>frutas[1:3]</Text>: Fatia ['banana', 'laranja']</Text>
+        <Text style={styles.itemLista}>• <Text style={styles.codigoInline}>frutas.remove("banana")</Text></Text>
       </Animatable.View>
 
-      {/* Projeto ToDo List - JavaScript */}
+      {/* Dicionários */}
       <Animatable.View animation="fadeInUp" duration={600} delay={200} style={[styles.card, {
         borderRadius: 12,
         padding: 16,
         marginBottom: 20,
         elevation: 2
       }]}>
-        <Text style={[styles.subtitulo, { fontSize: 20, marginBottom: 10 }]}>JavaScript:</Text>
+        <Text style={[styles.titulo, { fontSize: 22, marginBottom: 10 }]}>
+          Dicionários
+        </Text>
+
+        <Text style={[styles.paragrafo, { marginBottom: 10 }]}>
+          Coleções de pares chave-valor não ordenadas (Python 3.7+ mantém ordem):
+        </Text>
 
         <View style={{ backgroundColor: "#1e1e1e", padding: 12, borderRadius: 8, marginBottom: 12 }}>
           <Text style={{ color: "#eee", fontFamily: "monospace" }}>
-            {`function adicionar() {\n`}
-            {`  const texto = document.getElementById("tarefa").value;\n`}
-            {`  const item = document.createElement("li");\n`}
-            {`  item.innerText = texto;\n`}
-            {`  document.getElementById("lista").appendChild(item);\n`}
-            {`}`}
+            {`pessoa = {\n`}
+            {`    "nome": "Maria",\n`}
+            {`    "idade": 25,\n`}
+            {`    "ativo": True\n`}
+            {`}\n`}
+            {`print(pessoa["nome"])  # Maria\n`}
+            {`pessoa["email"] = "maria@exemplo.com"  # Adiciona nova chave`}
           </Text>
         </View>
 
-        <Text style={styles.itemLista}>
-          • Captura o valor digitado no campo.
-        </Text>
-        <Text style={styles.itemLista}>
-          • Cria um novo elemento <Text style={styles.codigoInline}>li</Text>.
-        </Text>
-        <Text style={styles.itemLista}>
-          • Adiciona o novo item à lista usando <Text style={styles.codigoInline}>appendChild()</Text>.
-        </Text>
+        <Text style={[styles.subtitulo, { marginBottom: 8 }]}>Métodos Úteis:</Text>
+        <Text style={styles.itemLista}>• <Text style={styles.codigoInline}>.keys()</Text>: Lista de chaves</Text>
+        <Text style={styles.itemLista}>• <Text style={styles.codigoInline}>.values()</Text>: Lista de valores</Text>
+        <Text style={styles.itemLista}>• <Text style={styles.codigoInline}>.items()</Text>: Pares chave-valor</Text>
       </Animatable.View>
 
       {/* Botões */}
       <Animatable.View animation="fadeInUp" duration={500} delay={400} style={{ gap: 12 }}>
-        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_js)/sitesJS')}>
+        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_python)/InteracaoPy')}>
           <LinearGradient
             colors={["#43e97b", "#38f9d7"]}
             start={{ x: 0, y: 0 }}
@@ -92,12 +89,12 @@ export default function praticaJS() {
             }}
           >
             <Text style={{ color: "white", fontSize: 16, fontWeight: 'bold' }}>
-              Próximo: Sites para Prática →
+              Próximo: Interação com Usuário →
             </Text>
           </LinearGradient>
         </TouchableOpacity>
-        
-        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_js)/domJS')}>
+
+        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_python)/FuncoesPy')}>
           <LinearGradient
             colors={["#43e97b", "#38f9d7"]}
             start={{ x: 0, y: 0 }}
@@ -111,7 +108,7 @@ export default function praticaJS() {
             }}
           >
             <Text style={{ color: "white", fontSize: 16, fontWeight: 'bold' }}>
-              ← Anterior: DOM - Document Object Model
+              ← Anterior: Funções
             </Text>
           </LinearGradient>
         </TouchableOpacity>
@@ -135,7 +132,6 @@ export default function praticaJS() {
           </LinearGradient>
         </TouchableOpacity>
       </Animatable.View>
-
     </ScrollView>
   );
 }

@@ -1,71 +1,71 @@
 import { Text, View, ScrollView, TouchableOpacity } from "react-native";
 import { useState } from "react";
 import { useRouter } from 'expo-router';
-import { styles } from "./IntroSQL";
+import { styles } from "../../IntroPython";
 import * as Animatable from 'react-native-animatable';
 import { LinearGradient } from "expo-linear-gradient";
 
-export default function QuizSQL() {
+export default function quizJS() {
   const router = useRouter();
 
   const perguntas = [
     {
-      enunciado: "1. Qual comando é usado para selecionar dados de uma tabela?",
-      opcoes: ["GET", "SELECT", "FETCH", "SHOW"],
+      enunciado: "1. Qual é a saída de typeof 42?",
+      opcoes: ["\"int\"", "\"number\"", "\"float\"", "\"string\""],
       correta: 1,
     },
     {
-      enunciado: "2. Qual palavra-chave é usada para remover registros?",
-      opcoes: ["REMOVE", "DELETE", "DROP", "CLEAR"],
-      correta: 1,
-    },
-    {
-      enunciado: "3. Qual comando cria uma nova tabela no banco de dados?",
-      opcoes: ["MAKE TABLE", "ADD TABLE", "CREATE TABLE", "INSERT TABLE"],
+      enunciado: "2. Qual comando mostra um alerta na tela?",
+      opcoes: ["console.log()", "prompt()", "alert()", "write()"],
       correta: 2,
+    },
+    {
+      enunciado: "3. Qual é a forma correta de declarar uma constante?",
+      opcoes: ["const nome = \"Ana\";", "var nome = \"Ana\";", "let nome = \"Ana\";", "nome := \"Ana\";"],
+      correta: 0,
     },
   ];
 
   const desafios = [
     {
-      titulo: "1. Selecione todos os dados da tabela 'clientes'.",
-      codigo: "SELECT * FROM clientes;"
+      titulo: "1. Crie uma função que retorne o quadrado de um número.",
+      codigo: "function quadrado(num) {\n  return num * num;\n}"
     },
     {
-      titulo: "2. Adicione um cliente com nome 'João' e idade 30.",
-      codigo: "INSERT INTO clientes (nome, idade) VALUES ('João', 30);"
+      titulo: "2. Peça ao usuário para digitar um nome e mostre uma mensagem personalizada.",
+      codigo: "let nome = prompt(\"Digite seu nome:\");\nalert(\"Bem-vindo(a), \" + nome);"
     },
     {
-      titulo: "3. Atualize a idade do cliente 'João' para 31.",
-      codigo: "UPDATE clientes SET idade = 31 WHERE nome = 'João';"
+      titulo: "3. Adicione um parágrafo HTML via JavaScript ao clicar em um botão.",
+      codigo: "function adicionarTexto() {\n  let p = document.createElement(\"p\");\n  p.innerText = \"Novo parágrafo adicionado!\";\n  document.body.appendChild(p);\n}"
     },
     {
-      titulo: "4. Delete todos os registros da tabela 'produtos'.",
-      codigo: "DELETE FROM produtos;"
+      titulo: "4. Crie um array com três cores e exiba a segunda cor.",
+      codigo: "let cores = [\"vermelho\", \"azul\", \"verde\"];\nconsole.log(cores[1]); // azul"
     },
     {
-      titulo: "5. Crie uma tabela 'vendas' com colunas id, produto e valor.",
-      codigo: "CREATE TABLE vendas (\n  id INT,\n  produto VARCHAR(100),\n  valor DECIMAL(10,2)\n);"
+      titulo: "5. Crie um objeto que represente um carro com modelo, cor e ano.",
+      codigo: "let carro = {\n  modelo: \"Gol\",\n  cor: \"preto\",\n  ano: 2022\n};"
     },
     {
-      titulo: "6. Selecione apenas os clientes com idade maior que 18.",
-      codigo: "SELECT * FROM clientes WHERE idade > 18;"
+      titulo: "6. Verifique se um número é par ou ímpar.",
+      codigo: "function verificar(numero) {\n  if (numero % 2 === 0) {\n    return \"Par\";\n  } else {\n    return \"Ímpar\";\n  }\n}"
     },
     {
-      titulo: "7. Conte o número total de produtos na tabela.",
-      codigo: "SELECT COUNT(*) FROM produtos;"
+      titulo: "7. Crie uma função que receba dois números e retorne a soma.",
+      codigo: "function soma(a, b) {\n  return a + b;\n}"
     },
     {
-      titulo: "8. Liste os nomes únicos da tabela 'clientes'.",
-      codigo: "SELECT DISTINCT nome FROM clientes;"
+      titulo: "8. Crie um laço que conte de 1 a 10 e imprima os números.",
+      codigo: "for (let i = 1; i <= 10; i++) {\n  console.log(i);\n}"
     },
     {
-      titulo: "9. Ordene os produtos pelo preço de forma decrescente.",
-      codigo: "SELECT * FROM produtos ORDER BY preco DESC;"
+      titulo: "9. Crie uma função que diga se a idade passada é maior de idade.",
+      codigo: "function maiorDeIdade(idade) {\n  return idade >= 18;\n}"
     },
     {
-      titulo: "10. Apague a tabela 'vendas'.",
-      codigo: "DROP TABLE vendas;"
+      titulo: "10. Crie um botão que mude o fundo da página para azul.",
+      codigo: "function mudarFundo() {\n  document.body.style.backgroundColor = \"blue\";\n}"
     },
   ];
 
@@ -74,7 +74,7 @@ export default function QuizSQL() {
   const [mostrarCodigos, setMostrarCodigos] = useState(Array(desafios.length).fill(false));
 
   return (
-    <ScrollView contentContainerStyle={[styles.container, { paddingBottom: 40}]}>      
+    <ScrollView contentContainerStyle={[styles.container, { paddingBottom: 40 }]}>      
       <Animatable.View animation="fadeInUp" duration={500} style={[styles.card, { borderRadius: 12, padding: 16, marginBottom: 20, elevation: 2 }]}>
         <Text style={[styles.titulo, { fontSize: 22, marginBottom: 10 }]}>Quiz (Múltipla Escolha)</Text>
 
@@ -135,7 +135,7 @@ export default function QuizSQL() {
 
       {/* Botões */}
       <Animatable.View animation="fadeInUp" duration={500} delay={400} style={{ gap: 12 }}>
-        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_sql)/SQLintro')}>
+        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_js)/IntroJava')}>
           <LinearGradient
               colors={["#43e97b", "#38f9d7"]}
               start={{ x: 0, y: 0 }}
@@ -149,27 +149,27 @@ export default function QuizSQL() {
               }}
           >
               <Text style={{ color: "white", fontSize: 16, fontWeight: 'bold' }}>
-                🌟 Voltar aos Módulos de SQL →
+                🌟 Voltar aos Módulos de JavaScript →
               </Text>
           </LinearGradient>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_sql)/ProjetosSQL')}>
+        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_js)/sitesJS')}>
           <LinearGradient
-              colors={["#43e97b", "#38f9d7"]}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 0 }}
-              style={{
+            colors={["#43e97b", "#38f9d7"]}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+            style={{
               paddingVertical: 14,
               paddingHorizontal: 24,
               borderRadius: 30,
               alignItems: 'center',
               elevation: 3
-              }}
+            }}
           >
-              <Text style={{ color: "white", fontSize: 16, fontWeight: 'bold' }}>
-              ← Anterior: Projetos Práticos
-              </Text>
+            <Text style={{ color: "white", fontSize: 16, fontWeight: 'bold' }}>
+              ← Anterior: Sites para Prática
+            </Text>
           </LinearGradient>
         </TouchableOpacity>
 

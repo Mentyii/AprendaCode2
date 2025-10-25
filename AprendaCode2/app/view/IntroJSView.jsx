@@ -2,7 +2,7 @@ import { View, ScrollView, TouchableOpacity, Text, Pressable, Animated } from "r
 import { useRouter } from 'expo-router';
 import * as Animatable from 'react-native-animatable';
 import { LinearGradient } from 'expo-linear-gradient';
-import { styles } from "../(modulos_python)/IntroPython";
+import { styles } from "../../IntroPython";
 
 export default function IntroJS() {
     const router = useRouter();

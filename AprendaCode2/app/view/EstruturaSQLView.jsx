@@ -2,59 +2,45 @@ import { Text, View, ScrollView, TouchableOpacity, StyleSheet } from "react-nati
 import { useRouter } from 'expo-router';
 import * as Animatable from 'react-native-animatable';
 import { LinearGradient } from "expo-linear-gradient";
-import { styles } from "./IntroSQL"; // Importa os estilos padronizados
+import { styles } from "./IntroSQLView"; // Importa estilos existentes
 
-export default function FuncoesSQL() {
+export default function EstruturaSQL() {
   const router = useRouter();
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       
-      {/* CARD 1 - O que são Funções */}
+      {/* CARD 1 - Condicionais */}
       <Animatable.View animation="fadeInUp" delay={100} style={styles.card}>
-        <Text style={styles.titulo}>O que são Funções em SQL?</Text>
+        <Text style={styles.titulo}>Condicionais com CASE</Text>
         <Text style={styles.paragrafo}>
-          Funções em SQL são instruções prontas que realizam operações sobre os dados. Elas podem ser usadas para manipulação de texto, números, datas e muito mais.
+          SQL não possui estruturas como `if`, mas usa o `CASE` para lógica condicional dentro das consultas.
         </Text>
-      </Animatable.View>
-
-      {/* CARD 2 - Funções Comuns */}
-      <Animatable.View animation="fadeInUp" delay={300} style={styles.card}>
-        <Text style={styles.titulo}>Funções Mais Usadas</Text>
-        <Text style={styles.subtitulo}>Numéricas:</Text>
-        <View style={styles.lista}>
-          <Text style={styles.itemLista}>• <Text style={{ fontWeight: "bold" }}>AVG()</Text>: Média dos valores</Text>
-          <Text style={styles.itemLista}>• <Text style={{ fontWeight: "bold" }}>SUM()</Text>: Soma dos valores</Text>
-          <Text style={styles.itemLista}>• <Text style={{ fontWeight: "bold" }}>COUNT()</Text>: Total de registros</Text>
-        </View>
-
-        <Text style={styles.subtitulo}>Texto:</Text>
-        <View style={styles.lista}>
-          <Text style={styles.itemLista}>• <Text style={{ fontWeight: "bold" }}>UPPER()</Text>: Converte texto para maiúsculas</Text>
-          <Text style={styles.itemLista}>• <Text style={{ fontWeight: "bold" }}>LOWER()</Text>: Converte para minúsculas</Text>
-          <Text style={styles.itemLista}>• <Text style={{ fontWeight: "bold" }}>LENGTH()</Text>: Tamanho do texto</Text>
-        </View>
-
-        <Text style={styles.subtitulo}>Datas:</Text>
-        <View style={styles.lista}>
-          <Text style={styles.itemLista}>• <Text style={{ fontWeight: "bold" }}>NOW()</Text>: Data e hora atual</Text>
-          <Text style={styles.itemLista}>• <Text style={{ fontWeight: "bold" }}>DATE()</Text>: Extrai apenas a data</Text>
-        </View>
-      </Animatable.View>
-
-      {/* CARD 3 - Exemplo de Uso */}
-      <Animatable.View animation="fadeInUp" delay={500} style={styles.card}>
-        <Text style={styles.titulo}>Exemplo</Text>
+        <Text style={styles.subtitulo}>Exemplo:</Text>
         <View style={styles.codigo}>
           <Text style={styles.paragrafo}>
-            {`SELECT UPPER(nome), AVG(salario)\nFROM funcionarios\nGROUP BY nome;`}
+            {`SELECT nome,\n       CASE\n         WHEN idade >= 18 THEN 'Adulto'\n         ELSE 'Menor'\n       END AS categoria\nFROM usuarios;`}
+          </Text>
+        </View>
+      </Animatable.View>
+
+      {/* CARD 2 - Repetições */}
+      <Animatable.View animation="fadeInUp" delay={300} style={styles.card}>
+        <Text style={styles.titulo}>Estruturas de Repetição</Text>
+        <Text style={styles.paragrafo}>
+          O SQL padrão não possui laços como `for` ou `while`, mas você pode criar loops dentro de procedures ou scripts armazenados, dependendo do banco de dados.
+        </Text>
+        <Text style={styles.subtitulo}>Exemplo de loop em PL/pgSQL (PostgreSQL):</Text>
+        <View style={styles.codigo}>
+          <Text style={styles.paragrafo}>
+            {`DO $$\nDECLARE\n  i INT := 1;\nBEGIN\n  WHILE i <= 5 LOOP\n    RAISE NOTICE 'Número: %', i;\n    i := i + 1;\n  END LOOP;\nEND$$;`}
           </Text>
         </View>
       </Animatable.View>
 
       {/* Botões */}
       <Animatable.View animation="fadeInUp" delay={400} duration={600} style={{ gap: 12 }}>
-          <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_sql)/ListasSQL')}>
+          <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_sql)/FuncoesSQL')}>
               <LinearGradient
                   colors={["#43e97b", "#38f9d7"]}
                   start={{ x: 0, y: 0 }}
@@ -68,12 +54,12 @@ export default function FuncoesSQL() {
                   }}
               >
                   <Text style={{ color: "white", fontSize: 16, fontWeight: 'bold' }}>
-                  Próximo: Tabelas, Listas e Relacionamentos →
+                  Próximo: Funções →
                   </Text>
               </LinearGradient>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_sql)/EstruturaSQL')}>
+          <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_sql)/VariaveisSQL')}>
               <LinearGradient
                   colors={["#43e97b", "#38f9d7"]}
                   start={{ x: 0, y: 0 }}
@@ -87,7 +73,7 @@ export default function FuncoesSQL() {
                   }}
               >
                   <Text style={{ color: "white", fontSize: 16, fontWeight: 'bold' }}>
-                  ← Anterior: Estruturas de Controle
+                  ← Anterior: Variáveis e Tipos
                   </Text>
               </LinearGradient>
           </TouchableOpacity>
