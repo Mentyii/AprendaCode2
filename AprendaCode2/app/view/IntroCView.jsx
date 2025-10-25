@@ -8,7 +8,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 export default function IntroC() {
   const router = useRouter();
-  const [completedModules, setCompletedModules] = useState<Record<string, boolean>>({});
+  const [completedModules, setCompletedModules] = useState<Record<string>>({});
   const [showConfetti, setShowConfetti] = useState(false);
 
   const modulos = [

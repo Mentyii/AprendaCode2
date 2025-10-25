@@ -72,7 +72,7 @@ export default function BasicoSQL() {
 
         {/* Botões */}
         <Animatable.View animation="fadeInUp" delay={400} duration={600} style={{ gap: 12 }}>
-            <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_sql)/VariaveisSQL')}>
+            <TouchableOpacity onPress={() => router.push('/view/variaveisSQLView')}>
                 <LinearGradient
                     colors={["#43e97b", "#38f9d7"]}
                     start={{ x: 0, y: 0 }}
@@ -91,7 +91,7 @@ export default function BasicoSQL() {
                 </LinearGradient>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_sql)/IntroSQL')}>
+            <TouchableOpacity onPress={() => router.push('/view/introSQLView')}>
                 <LinearGradient
                     colors={["#43e97b", "#38f9d7"]}
                     start={{ x: 0, y: 0 }}

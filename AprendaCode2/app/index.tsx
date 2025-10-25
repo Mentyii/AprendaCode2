@@ -7,7 +7,7 @@ export default function IndexScreen() {
   const router = useRouter();
 
   const handleNavigateToLogin = () => {
-    router.push('/view/login');
+    router.push('/view/loginView');
   };
 
   return (

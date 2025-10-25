@@ -72,7 +72,7 @@ export default function domJS() {
 
       {/* Botões */}
       <Animatable.View animation="fadeInUp" duration={500} delay={400} style={{ gap: 12 }}>
-        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_js)/praticaJS')}>
+        <TouchableOpacity onPress={() => router.push('/view/praticaJSView')}>
           <LinearGradient
             colors={["#43e97b", "#38f9d7"]}
             start={{ x: 0, y: 0 }}
@@ -91,7 +91,7 @@ export default function domJS() {
           </LinearGradient>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_js)/objetosJS')}>
+        <TouchableOpacity onPress={() => router.push('/view/objetosJSView')}>
           <LinearGradient
             colors={["#43e97b", "#38f9d7"]}
             start={{ x: 0, y: 0 }}

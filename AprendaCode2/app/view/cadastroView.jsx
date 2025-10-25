@@ -61,7 +61,7 @@ export default function cadastro() {
                 <Text style={styles.dismissText}>Fechar</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity onPress={() => router.push("/view/login")}>
+              <TouchableOpacity onPress={() => router.push("/view/loginView")}>
                 <Text style={styles.dismissText}>Voltar à tela de login</Text>
               </TouchableOpacity>
             </View>
