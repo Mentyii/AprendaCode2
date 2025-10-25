@@ -2,7 +2,7 @@ import { Text, View, ScrollView, TouchableOpacity, StyleSheet } from "react-nati
 import { useRouter } from 'expo-router';
 import * as Animatable from 'react-native-animatable';
 import { LinearGradient } from "expo-linear-gradient";
-import { styles } from "./IntroSQLView"; // Importa estilos existentes
+import { styles } from "./introSQLView"; // Importa estilos existentes
 
 export default function EstruturaSQL() {
   const router = useRouter();
