@@ -1,5 +1,5 @@
 // index.tsx
-import * as React from 'react';
+import *'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { useRouter } from 'expo-router';
 
@@ -23,7 +23,7 @@ export default function IndexScreen() {
 
       {/* Parte inferior com mensagem e botão */}
       <View style={styles.bottomSection}>
-        <Text style={styles.subtitle}>Bem-vindo ao seu portal de aprendizado de programação!</Text>
+        <Text style={styles.subtitle}>Bem-vindo ao seu portal de aprendizado de programação</Text>
         <TouchableOpacity style={styles.button} onPress={handleNavigateToLogin}>
           <Text style={styles.buttonText}>Entrar</Text>
         </TouchableOpacity>
@@ -33,50 +33,45 @@ export default function IndexScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  container,
     backgroundColor: '#2c214a',
   },
-  topSection: {
-    flex: 1,
+  topSection,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  bottomSection: {
-    flex: 1,
+  bottomSection,
     backgroundColor: '#3b3b3b',
-    borderTopLeftRadius: 30,
-    borderTopRightRadius: 30,
+    borderTopLeftRadius,
+    borderTopRightRadius,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 30,
+    paddingHorizontal,
   },
   logo: {
     width: '60%',
     height: '60%',
-    marginBottom: 10,
+    marginBottom,
   },
-  title: {
-    fontSize: 32,
+  title,
     fontWeight: 'bold',
     color: '#FFF',
   },
-  subtitle: {
-    fontSize: 18,
+  subtitle,
     color: '#DDD7ED',
     textAlign: 'center',
-    marginBottom: 30,
+    marginBottom,
   },
   button: {
     backgroundColor: '#5B4E82',
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    borderRadius: 8,
-    elevation: 3,
+    paddingVertical,
+    paddingHorizontal,
+    borderRadius,
+    elevation,
   },
   buttonText: {
     color: '#DDD7ED',
-    fontSize: 18,
+    fontSize,
     fontWeight: 'bold',
   },
 });
