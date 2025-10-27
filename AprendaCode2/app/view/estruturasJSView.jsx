@@ -1,6 +1,6 @@
 import { Text, ScrollView, TouchableOpacity, View } from "react-native";
 import { useRouter } from 'expo-router';
-import { styles } from "../../IntroPython";
+import { styles } from "../view/introPythonView";
 import * as Animatable from 'react-native-animatable';
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -96,7 +96,7 @@ export default function estruturasJS() {
 
     {/* Botões */}
       <Animatable.View animation="fadeInUp" delay={400} duration={600} style={{ gap: 12 }}>
-        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_js)/funcoesJS')}>
+        <TouchableOpacity onPress={() => router.push('/view/funcoesJsView')}>
           <LinearGradient
             colors={["#43e97b", "#38f9d7"]}
             start={{ x: 0, y: 0 }}
@@ -115,7 +115,7 @@ export default function estruturasJS() {
           </LinearGradient>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_js)/variaveisJS')}>
+        <TouchableOpacity onPress={() => router.push('/')}>
           <LinearGradient
             colors={["#43e97b", "#38f9d7"]}
             start={{ x: 0, y: 0 }}

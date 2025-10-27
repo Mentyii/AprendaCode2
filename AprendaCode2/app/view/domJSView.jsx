@@ -1,6 +1,6 @@
 import { Text, View, ScrollView, TouchableOpacity } from "react-native";
 import { useRouter } from 'expo-router';
-import { styles } from "../../IntroPython"
+import { styles } from "./introPythonView";
 import * as Animatable from 'react-native-animatable';
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -110,7 +110,7 @@ export default function domJS() {
           </LinearGradient>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => router.push('/(tabs)/topicos')}>
+        <TouchableOpacity onPress={() => router.push('/view/topicos')}>
           <LinearGradient
             colors={["#f953c6", "#b91d73"]}
             start={{ x: 0, y: 0 }}

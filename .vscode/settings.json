@@ -21,7 +21,9 @@
         "**/*metro.config.js":true,
         "**/*google-services.json":true,
         "**/*GoogleService-Info.plist":true,
-        "**/*assets":true
+        "**/*assets":true,
+        "**/*android":true,
+        "**/*ios":true
     } 
     // Certifique-se de que não há vírgula extra aqui
 }

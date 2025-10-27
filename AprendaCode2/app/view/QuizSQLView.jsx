@@ -1,7 +1,7 @@
 import { Text, View, ScrollView, TouchableOpacity } from "react-native";
 import { useState } from "react";
 import { useRouter } from 'expo-router';
-import { styles } from "../../IntroSQL";
+import { styles } from "./introSQLView";
 import * as Animatable from 'react-native-animatable';
 import { LinearGradient } from "expo-linear-gradient";
 

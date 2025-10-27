@@ -61,7 +61,7 @@ export default function IntroH() {
     }
   }, [completedModules]);
 
-  const toggleModule = (moduleId: string) => {
+  const toggleModule = (moduleId) => {
     setCompletedModules(prev => ({
       ...prev,
       [moduleId]: !prev[moduleId]
@@ -111,7 +111,7 @@ export default function IntroH() {
 
           <TouchableOpacity
             style={{ flex: 1 }}
-            onPress={() => router.push(`/(topicos)/(modulos_html)/${modulo.screen}` as any)}
+            onPress={() => router.push(`/view/${modulo.screen}`)}
           >
             <Text style={{
               fontSize: 17,
@@ -125,7 +125,7 @@ export default function IntroH() {
       ))}
       
       <Animatable.View animation="fadeInUp" delay={modulos.length * 100 + 200}>
-        <TouchableOpacity style={{padding: 20}}onPress={() => router.push('/(tabs)/topicos')}>
+        <TouchableOpacity style={{padding: 20}}onPress={() => router.push('/view/topicosView')}>
           <LinearGradient
             colors={["#f953c6", "#b91d73"]}
             start={{ x: 0, y: 0 }}

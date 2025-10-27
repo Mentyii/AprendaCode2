@@ -8,7 +8,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 export default function IntroPy() {
   const router = useRouter();
-  const [completedModules, setCompletedModules] = useState<Record<string, boolean>>({});
+  const [completedModules, setCompletedModules] = useState<Record<string>>({});
   const [showConfetti, setShowConfetti] = useState(false);
 
   const modulos = [
@@ -66,7 +66,7 @@ export default function IntroPy() {
     }
   }, [completedModules]);
 
-  const toggleModule = (moduleId: string) => {
+  const toggleModule = (moduleId) => {
     setCompletedModules(prev => ({
       ...prev,
       [moduleId]: !prev[moduleId]
@@ -116,7 +116,7 @@ export default function IntroPy() {
 
           <TouchableOpacity
             style={{ flex: 1 }}
-            onPress={() => router.push(`/(topicos)/(modulos_python)/${modulo.screen}` as any)}
+            onPress={() => router.push(`/view/${modulo.screen}`)}
           >
             <Text style={{
               fontSize: 17,
@@ -131,7 +131,7 @@ export default function IntroPy() {
 
 
       <Animatable.View animation="fadeInUp" delay={modulos.length * 100 + 200}>
-        <TouchableOpacity style={{padding: 10}}onPress={() => router.push('/(tabs)/topicos')}>
+        <TouchableOpacity style={{padding: 10}}onPress={() => router.push('/view/topicosView')}>
           <LinearGradient
             colors={["#f953c6", "#b91d73"]}
             start={{ x: 0, y: 0 }}

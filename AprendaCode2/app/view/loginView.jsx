@@ -1,26 +1,49 @@
-
-//login.tsx
+// login.tsx (Corrigido para SDK Web/JS)
 import React, { useState } from "react";
 import { Text, View, TextInput, StyleSheet, TouchableOpacity } from "react-native";
 import { useRouter } from "expo-router";
-import auth from '@react-native-firebase/auth' 
+
+// IMPORTAR: Funções do SDK Web/JS e a instância de auth do _layout.jsx
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { authInstance } from '../_layout'; // Importa a instância exportada do _layout.jsx
+
 import * as Animatable from 'react-native-animatable';
 
-export default function login() {
+export default function Login() { 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [erroLogin, setErroLogin] = useState("");
   const router = useRouter();
 
   const signIn = async () => {
-   try {
-    const userCredential = await auth().signInWithEmailAndPassword( email, password);
-    if (userCredential) {
-      router.replace('/(tabs)/home');
+    // 1. Validação básica
+    if (!email || !password) {
+      setErroLogin("❌ Por favor, preencha o e-mail e a senha.");
+      return;
     }
-    } catch (error: any) {
-      console.log(error);
-      setErroLogin("❌ Email ou senha inválidos. Tente novamente.");
+
+    try {
+      // 2. Usar a função do SDK Web/JS com a instância de auth
+      const userCredential = await signInWithEmailAndPassword(authInstance, email, password);
+      
+      if (userCredential) {
+        router.replace('/view/homeView');
+      }
+    } catch (error) {
+      console.log("Erro de Login:", error.code, error.message);
+      
+      // 3. Tratamento de erros específicos do Firebase
+      let mensagem = "❌ Ocorreu um erro desconhecido. Tente novamente.";
+
+      if (error.code === 'auth/wrong-password' || error.code === 'auth/user-not-found' || error.code === 'auth/invalid-credential') {
+        mensagem = "❌ E-mail ou senha inválidos.";
+      } else if (error.code === 'auth/invalid-email') {
+        mensagem = "📧 O formato do e-mail é inválido.";
+      } else if (error.code === 'auth/user-disabled') {
+        mensagem = "🚫 Sua conta foi desativada.";
+      }
+      
+      setErroLogin(mensagem);
     }
   }
 
@@ -32,20 +55,20 @@ export default function login() {
         <Text style={styles.subtitle}>Faça login na sua conta</Text>
       </View>
 
-      {/* Seção inferior */}
+      {/* Seção inferior (Mantida sem alterações) */}
       <View style={styles.bottomSection}>
         {erroLogin !== "" && (
-        <Animatable.View
-          animation="fadeInDown"
-          duration={500}
-          style={styles.alertBox}
-        >
-          <Text style={styles.alertText}>{erroLogin}</Text>
-          <TouchableOpacity onPress={() => setErroLogin("")}>
-            <Text style={styles.dismissText}>Fechar</Text>
-          </TouchableOpacity>
-        </Animatable.View>
-      )}
+          <Animatable.View
+            animation="fadeInDown"
+            duration={500}
+            style={styles.alertBox}
+          >
+            <Text style={styles.alertText}>{erroLogin}</Text>
+            <TouchableOpacity onPress={() => setErroLogin("")}>
+              <Text style={styles.dismissText}>Fechar</Text>
+            </TouchableOpacity>
+          </Animatable.View>
+        )}
 
         <TextInput
           style={styles.input}
@@ -66,7 +89,7 @@ export default function login() {
           <Text style={styles.buttonText}>Entrar</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => router.push("/view/cadastro")}>
+        <TouchableOpacity onPress={() => router.push("/view/cadastroView")}>
           <Text style={styles.link}>Não tem uma conta? Cadastre-se aqui.</Text>
         </TouchableOpacity>
       </View>

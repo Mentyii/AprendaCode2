@@ -2,7 +2,7 @@ import { Text, View, ScrollView, TouchableOpacity } from "react-native";
 import { useRouter } from 'expo-router';
 import * as Animatable from 'react-native-animatable';
 import { LinearGradient } from "expo-linear-gradient";
-import { styles } from "../../IntroSQL";
+import { styles } from "./introSQLView";
 
 export default function VariaveisSQL() {
   const router = useRouter();

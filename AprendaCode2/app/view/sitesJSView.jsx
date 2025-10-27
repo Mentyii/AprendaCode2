@@ -1,13 +1,13 @@
 import { Text, View, ScrollView, TouchableOpacity, Linking } from "react-native";
 import { useRouter } from 'expo-router';
-import { styles } from "../../IntroPython";
+import { styles } from "./introPythonView";
 import * as Animatable from 'react-native-animatable';
 import { LinearGradient } from "expo-linear-gradient";
 
 export default function sitesJS() {
   const router = useRouter();
 
-  const abrirLink = (url: string) => {
+  const abrirLink = (url) => {
     Linking.openURL(url);
   };
 

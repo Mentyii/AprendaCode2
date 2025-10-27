@@ -7,8 +7,8 @@ import { LinearGradient } from "expo-linear-gradient";
 export default function IntroSQL() {
     const router = useRouter();
 
-    const navigateTo = (screen: string) => {
-        router.push(`/(topicos)/(modulos_sql)/${screen}` as any);
+    const navigateTo = (screen) => {
+        router.push(`/(topicos)/(modulos_sql)/${screen}`);
     };
 
     return (
@@ -56,7 +56,7 @@ export default function IntroSQL() {
 
             {/* Botões */}
             <Animatable.View animation="fadeInUp" delay={400} duration={600} style={{ gap: 12 }}>
-                <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_sql)/BasicoSQL')}>
+                <TouchableOpacity onPress={() => router.push('/view/basicoSQLView')}>
                     <LinearGradient
                         colors={["#43e97b", "#38f9d7"]}
                         start={{ x: 0, y: 0 }}
@@ -75,7 +75,7 @@ export default function IntroSQL() {
                     </LinearGradient>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => router.push('/(tabs)/topicos')}>
+                <TouchableOpacity onPress={() => router.push('/view/topicosView')}>
                     <LinearGradient
                         colors={["#f953c6", "#b91d73"]}
                         start={{ x: 0, y: 0 }}

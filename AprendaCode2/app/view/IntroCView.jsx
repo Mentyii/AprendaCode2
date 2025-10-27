@@ -1,14 +1,17 @@
+// IntroC.jsx
+import React, { useState, useEffect, useRef } from 'react'; // Importação explícita do React
 import { View, ScrollView, TouchableOpacity, Text, Pressable, Animated } from "react-native";
 import { useRouter } from 'expo-router';
-import { useState, useEffect, useRef } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+// Importe AsyncStorage do pacote correto
+import AsyncStorage from '@react-native-async-storage/async-storage'; 
 import { MaterialIcons } from '@expo/vector-icons';
 import * as Animatable from 'react-native-animatable';
 import { LinearGradient } from 'expo-linear-gradient';
 
 export default function IntroC() {
   const router = useRouter();
-  const [completedModules, setCompletedModules] = useState<Record<string>>({});
+  // REMOVIDA A ANOTAÇÃO DE TIPO: useState<Record<string>>({})
+  const [completedModules, setCompletedModules] = useState({});
   const [showConfetti, setShowConfetti] = useState(false);
 
   const modulos = [
@@ -27,7 +30,8 @@ export default function IntroC() {
       try {
         const savedProgress = await AsyncStorage.getItem('@CSS_modules_progress');
         if (savedProgress) {
-          setCompletedModules(JSON.parse(savedProgress));
+          // JSON.parse retorna um objeto JavaScript
+          setCompletedModules(JSON.parse(savedProgress)); 
         }
       } catch (error) {
         console.error('Erro ao carregar progresso:', error);
@@ -60,7 +64,8 @@ export default function IntroC() {
     }
   }, [completedModules]);
 
-  const toggleModule = (moduleId: string) => {
+  // REMOVIDA A ANOTAÇÃO DE TIPO (moduleId: string)
+  const toggleModule = (moduleId) => { 
     setCompletedModules(prev => ({
       ...prev,
       [moduleId]: !prev[moduleId]
@@ -68,18 +73,26 @@ export default function IntroC() {
   };
 
   return (
-    <ScrollView contentContainerStyle={{ padding: 20, backgroundColor: "#2c214a", paddingBottom: 50, width: '100%', height: '100%' }}>
+    <ScrollView contentContainerStyle={{ padding: 20, backgroundColor: "#2c214a", paddingBottom: 50, width: '100%', minHeight: '100%' }}> 
       <Animatable.Text animation="fadeInDown" style={{ fontSize: 26, fontWeight: 'bold', color: '#DDD7ED', marginBottom: 20, textAlign: 'center' }}>
         🌟 Módulos de CSS
       </Animatable.Text>
 
+      {/* Seção de Progresso */}
       <View style={{ alignItems: 'center', marginBottom: 25 }}>
         <Text style={{ fontSize: 14, fontWeight: '600', marginBottom: 6, color: '#DDD7ED' }}>
           {Math.round(progress * 100)}% concluído ({completedCount}/{modulos.length})
         </Text>
 
         <View style={{ backgroundColor: '#3b3b3b', borderRadius: 12, width: BAR_WIDTH, height: 16, overflow: 'hidden' }}>
-          <Animated.View style={{ width: progressAnim.interpolate({ inputRange: [0, 1], outputRange: ['0%', '100%'] }), height: 16 }}>
+          <Animated.View style={{ 
+            // Uso de `progressAnim.interpolate` para calcular a largura animada
+            width: progressAnim.interpolate({ 
+              inputRange: [0, 1], 
+              outputRange: ['0%', '100%'] 
+            }), 
+            height: 16 
+          }}>
             <LinearGradient
               colors={['#43e97b', '#38f9d7']}
               start={{ x: 0, y: 0 }}
@@ -90,16 +103,19 @@ export default function IntroC() {
         </View>
       </View>
 
+      {/* Lista de Módulos */}
       {modulos.map((modulo, index) => (
         <Animatable.View key={modulo.id} animation="fadeInUp" delay={index * 100} style={{
           flexDirection: 'row',
           alignItems: 'center',
-          backgroundColor: completedModules[modulo.id] ? "#e9f7ef" : "#3b3b3b",
+          // Cor condicional: `#e9f7ef` é claro (para módulo concluído)
+          backgroundColor: completedModules[modulo.id] ? "#e9f7ef" : "#3b3b3b", 
           padding: 14,
           marginBottom: 12,
           borderRadius: 14,
           elevation: 2,
         }}>
+          {/* Checkbox para alternar o status */}
           <Pressable onPress={() => toggleModule(modulo.id)} style={{ marginRight: 14 }}>
             <MaterialIcons
               name={completedModules[modulo.id] ? "check-box" : "check-box-outline-blank"}
@@ -108,14 +124,17 @@ export default function IntroC() {
             />
           </Pressable>
 
+          {/* Botão para navegação */}
           <TouchableOpacity
             style={{ flex: 1 }}
-            onPress={() => router.push(`/(topicos)/(modulos_css)/${modulo.screen}` as any)}
+            // REMOVIDA A ANOTAÇÃO DE TIPO: as any
+            onPress={() => router.push(`/(topicos)/(modulos_css)/${modulo.screen}`)} 
           >
             <Text style={{
               fontSize: 17,
               fontWeight: '600',
-              color: completedModules[modulo.id] ? "#1e4620" : "#FFF"
+              // Cor condicional do texto
+              color: completedModules[modulo.id] ? "#1e4620" : "#FFF" 
             }}>
               {modulo.title}
             </Text>
@@ -123,8 +142,9 @@ export default function IntroC() {
         </Animatable.View>
       ))}
 
+      {/* Botão Voltar para Home */}
       <Animatable.View animation="fadeInUp" delay={modulos.length * 100 + 200}>
-        <TouchableOpacity style={{padding: 20}}onPress={() => router.push('/(tabs)/topicos')}>
+        <TouchableOpacity style={{ padding: 20 }} onPress={() => router.push('/(tabs)/topicos')}>
           <LinearGradient
             colors={["#f953c6", "#b91d73"]}
             start={{ x: 0, y: 0 }}
@@ -144,7 +164,8 @@ export default function IntroC() {
         </TouchableOpacity>
       </Animatable.View>
 
-
+      {/* Confetti (opcional, requer o componente Confetti se for usado) */}
+      {/* {showConfetti && <Confetti />} */}
     </ScrollView>
   );
 }
