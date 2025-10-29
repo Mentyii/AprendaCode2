@@ -14,13 +14,12 @@ export default function AutoresScreen() {
 
       {/* Lista de autores */}
       <View style={styles.list}>
-        <Text style={styles.author}>• Guilherme Pereira Scatolino</Text>
-        <Text style={styles.author}>• Karen Gabrielle Aredes dos Santos</Text>
-        <Text style={styles.author}>• Maria Eduarda Vilaca</Text>
-        <Text style={styles.author}>• Matheus Carneiro Silva</Text>
-        <Text style={styles.author}>• Miguel Frederico Rocha Souza Pereira</Text>
-        <Text style={styles.author}>• Samuel Souto Pedra</Text>
-        <Text style={styles.author}>• Vitor Gabriel Ferreira Bastos</Text>
+        <Text style={styles.author}>• Andre Mendes Aguiar</Text>
+        <Text style={styles.author}>• Gabriela Martins Siqueira</Text>
+        <Text style={styles.author}>• Leticia Gonçalves Teixeira</Text>
+        <Text style={styles.author}>• Matheus Nunes dos Santos</Text>
+        <Text style={styles.author}>• Tiago Dias Correia</Text>
+        <Text style={styles.author}>• Vinicius Augusto Marques Araujo</Text>
         <Text style={styles.author}>• William Hideyuki Ibaraki Suyama</Text>
       </View>
 
