@@ -30,6 +30,10 @@ export default function TopicosScreen() {
         <TouchableOpacity style={styles.buttonTopic} onPress={() => router.push('/view/introCView')}>
           <Text style={styles.buttonText}>CSS</Text>
         </TouchableOpacity>
+
+        <TouchableOpacity style={styles.buttonTopic} onPress={() => router.push('/view/QuizView')}>
+          <Text style={styles.buttonText}>QuizView Teste</Text>
+        </TouchableOpacity>
       </ScrollView>
     </View>
   );
