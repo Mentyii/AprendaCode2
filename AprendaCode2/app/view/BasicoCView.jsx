@@ -84,7 +84,7 @@ export default function BasicoC() {
                   }}
               >
                   <Text style={{ color: "white", fontSize: 16, fontWeight: 'bold' }}>
-                  Próximo: Quiz →
+                  Próximo: Qiz →
                   </Text>
               </LinearGradient>
           </TouchableOpacity>
