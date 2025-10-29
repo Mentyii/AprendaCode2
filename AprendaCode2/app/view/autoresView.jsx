@@ -1,7 +1,7 @@
 // /(tabs)/autores.tsx
 import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
-import * as Animatable from 'react-native-animatable';
+import * as Animatable from 'react-native-animatable'; 
 
 export default function AutoresScreen() {
   return (
