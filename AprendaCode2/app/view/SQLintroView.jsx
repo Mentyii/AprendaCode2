@@ -9,19 +9,19 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 export default function IntroSQL() {
     const router = useRouter();
-    const [completedModules, setCompletedModules] = useState<Record<string>>({});
+    const [completedModules, setCompletedModules] = useState({});
     const [showConfetti, setShowConfetti] = useState(false);
 
     const modulos = [
-        { id: "IntroSQL", title: "🐘 Introdução Técnica", screen: "IntroSQL" },
-        { id: "BasicoSQL", title: "🔤 Básico do SQL", screen: "BasicoSQL" },
-        { id: "VariaveisSQL", title: "📊 Variáveis e Tipos", screen: "VariaveisSQL" },
-        { id: "EstruturaSQL", title: "🔄 Estruturas de Controle", screen: "EstruturaSQL" },
-        { id: "FuncoesSQL", title: "🧩 Funções", screen: "FuncoesSQL" },
-        { id: "ListasSQL", title: "🗃️  Tabelas, Listas e Relacionamentos", screen: "ListasSQL" },
-        { id: "InteracaoSQL", title: "💬 Interação com Usuário", screen: "InteracaoSQL" },
-        { id: "ProjetosSQL", title: "🛠️ Projetos Práticos", screen: "ProjetosSQL" },
-        { id: "QuizSQL", title: "❓ Quiz", screen: "QuizSQL" }
+        { id: "IntroSQL", title: "🐘 Introdução Técnica", screen: "introSQLView" },
+        { id: "BasicoSQL", title: "🔤 Básico do SQL", screen: "basicoSQLView" },
+        { id: "VariaveisSQL", title: "📊 Variáveis e Tipos", screen: "variaveisSQLView" },
+        { id: "EstruturaSQL", title: "🔄 Estruturas de Controle", screen: "estruturaSQLView" },
+        { id: "FuncoesSQL", title: "🧩 Funções", screen: "funcoesSQLView" },
+        { id: "ListasSQL", title: "🗃️  Tabelas, Listas e Relacionamentos", screen: "listasSQLView" },
+        { id: "InteracaoSQL", title: "💬 Interação com Usuário", screen: "interacaoSQLView" },
+        { id: "ProjetosSQL", title: "🛠️ Projetos Práticos", screen: "projetosSQLView" },
+        { id: "QuizSQL", title: "❓ Quiz", screen: "quizSQLView" }
     ];
 
     const completedCount = modulos.filter(m => completedModules[m.id]).length;
@@ -75,7 +75,7 @@ export default function IntroSQL() {
     };
 
     return (
-        <ScrollView contentContainerStyle={{ padding: 20, backgroundColor: "#2c214a", paddingBottom: 50, width: '100%', height: '100%' }}>
+        <ScrollView contentContainerStyle={{ padding: 20, backgroundColor: "#2c214a", paddingBottom: 50, width: '100%', minHeight: '100%' }}>
             <Animatable.Text animation="fadeInDown" style={{ fontSize: 26, fontWeight: 'bold', color: '#DDD7ED', marginBottom: 20, textAlign: 'center' }}>
                 🌟 Módulos de SQL
             </Animatable.Text>

@@ -78,7 +78,7 @@ export default function funcoesJS() {
 
     {/* Botões */}
       <Animatable.View animation="fadeInUp" delay={400} duration={600} style={{ gap: 12 }}>
-        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_js)/objetosJS')}>
+        <TouchableOpacity onPress={() => router.push('/view/objetosJSView')}>
           <LinearGradient
             colors={["#43e97b", "#38f9d7"]}
             start={{ x: 0, y: 0 }}
@@ -97,7 +97,7 @@ export default function funcoesJS() {
           </LinearGradient>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_js)/estruturasJS')}>
+        <TouchableOpacity onPress={() => router.push('/view/estruturasJSView')}>
           <LinearGradient
             colors={["#43e97b", "#38f9d7"]}
             start={{ x: 0, y: 0 }}
@@ -116,7 +116,7 @@ export default function funcoesJS() {
           </LinearGradient>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => router.push('/(tabs)/topicos')}>
+        <TouchableOpacity onPress={() => router.push('/view/topicosView')}>
           <LinearGradient
             colors={["#f953c6", "#b91d73"]}
             start={{ x: 0, y: 0 }}

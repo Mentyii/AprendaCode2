@@ -10,7 +10,7 @@ export default function IntroHTML() {
 
     // REMOVIDA A ANOTAÇÃO DE TIPO (screen: string) e (as any)
     const navigateTo = (screen) => { 
-        router.push(`/(topicos)/(modulos_html)/${screen}`);
+        router.push(`/view/${screen}`);
     };
 
     return (
@@ -68,7 +68,7 @@ export default function IntroHTML() {
             {/* Botões */}
             <Animatable.View animation="fadeInUp" delay={400} duration={600} style={{ gap: 12, marginBottom: 30 }}>
                 {/* Próximo Módulo */}
-                <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_html)/BasicoH')}>
+                <TouchableOpacity onPress={() => router.push('/view/basicoHView')}>
                     <LinearGradient
                         colors={["#43e97b", "#38f9d7"]}
                         start={{ x: 0, y: 0 }}
@@ -82,7 +82,7 @@ export default function IntroHTML() {
                 </TouchableOpacity>
                 
                 {/* Voltar aos Módulos de HTML (Rota para IntroH é a mesma do arquivo, alterado para a Home do módulo) */}
-                <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_html)')}> 
+                <TouchableOpacity onPress={() => router.push('/view/introHView')}> 
                     <LinearGradient
                         colors={["#43e97b", "#38f9d7"]}
                         start={{ x: 0, y: 0 }}
@@ -96,7 +96,7 @@ export default function IntroHTML() {
                 </TouchableOpacity>
 
                 {/* Voltar para Home */}
-                <TouchableOpacity onPress={() => router.push('/(tabs)/topicos')}>
+                <TouchableOpacity onPress={() => router.push('/view/topicosView')}>
                     <LinearGradient
                         colors={["#f953c6", "#b91d73"]}
                         start={{ x: 0, y: 0 }}

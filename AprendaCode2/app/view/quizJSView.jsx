@@ -135,7 +135,7 @@ export default function quizJS() {
 
       {/* Botões */}
       <Animatable.View animation="fadeInUp" duration={500} delay={400} style={{ gap: 12 }}>
-        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_js)/IntroJava')}>
+        <TouchableOpacity onPress={() => router.push('/view/introJavaView')}>
           <LinearGradient
               colors={["#43e97b", "#38f9d7"]}
               start={{ x: 0, y: 0 }}
@@ -154,7 +154,7 @@ export default function quizJS() {
           </LinearGradient>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_js)/sitesJS')}>
+        <TouchableOpacity onPress={() => router.push('/view/sitesJSView')}>
           <LinearGradient
             colors={["#43e97b", "#38f9d7"]}
             start={{ x: 0, y: 0 }}
@@ -173,7 +173,7 @@ export default function quizJS() {
           </LinearGradient>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => router.push('/(tabs)/topicos')}>
+        <TouchableOpacity onPress={() => router.push('/view/topicosView')}>
           <LinearGradient
             colors={["#f953c6", "#b91d73"]}
             start={{ x: 0, y: 0 }}

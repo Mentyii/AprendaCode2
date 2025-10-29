@@ -10,14 +10,13 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 export default function IntroC() {
   const router = useRouter();
-  // REMOVIDA A ANOTAÇÃO DE TIPO: useState<Record<string>>({})
   const [completedModules, setCompletedModules] = useState({});
   const [showConfetti, setShowConfetti] = useState(false);
 
   const modulos = [
-    { id: "IntroCSS", title: "🖼️ Introdução Técnica", screen: "IntroCSS" },
-    { id: "BasicoC", title: "🔤 Básico do CSS", screen: "BasicoC" },
-    { id: "QuizC", title: "🛠️ Quiz", screen: "QuizC" },
+    { id: "IntroCSS", title: "🖼️ Introdução Técnica", screen: "introCSSView" },
+    { id: "BasicoC", title: "🔤 Básico do CSS", screen: "basicoCView" },
+    { id: "QuizC", title: "🛠️ Quiz", screen: "quizCView" },
   ];
 
   const completedCount = modulos.filter(m => completedModules[m.id]).length;
@@ -128,7 +127,7 @@ export default function IntroC() {
           <TouchableOpacity
             style={{ flex: 1 }}
             // REMOVIDA A ANOTAÇÃO DE TIPO: as any
-            onPress={() => router.push(`/(topicos)/(modulos_css)/${modulo.screen}`)} 
+            onPress={() => router.push(`/view/${modulo.screen}`)} 
           >
             <Text style={{
               fontSize: 17,
@@ -144,7 +143,7 @@ export default function IntroC() {
 
       {/* Botão Voltar para Home */}
       <Animatable.View animation="fadeInUp" delay={modulos.length * 100 + 200}>
-        <TouchableOpacity style={{ padding: 20 }} onPress={() => router.push('/(tabs)/topicos')}>
+        <TouchableOpacity style={{ padding: 20 }} onPress={() => router.push('/view/topicosView')}>
           <LinearGradient
             colors={["#f953c6", "#b91d73"]}
             start={{ x: 0, y: 0 }}

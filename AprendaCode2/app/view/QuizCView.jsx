@@ -92,7 +92,7 @@ export default function QuizC() {
       {/* Botões */}
       <Animatable.View animation="fadeInUp" duration={500} delay={400} style={{ gap: 12 }}>
 
-        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_css)/IntroC')}>
+        <TouchableOpacity onPress={() => router.push('/view/introCView')}>
           <LinearGradient
               colors={["#43e97b", "#38f9d7"]}
               start={{ x: 0, y: 0 }}
@@ -111,7 +111,7 @@ export default function QuizC() {
           </LinearGradient>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_css)/BasicoC')}>
+        <TouchableOpacity onPress={() => router.push('/view/basicoCView')}>
           <LinearGradient
               colors={["#43e97b", "#38f9d7"]}
               start={{ x: 0, y: 0 }}
@@ -130,7 +130,7 @@ export default function QuizC() {
           </LinearGradient>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => router.push('/(tabs)/topicos')}>
+        <TouchableOpacity onPress={() => router.push('/view/topicosView')}>
           <LinearGradient
             colors={["#f953c6", "#b91d73"]}
             start={{ x: 0, y: 0 }}

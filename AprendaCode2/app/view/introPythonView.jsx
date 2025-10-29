@@ -10,7 +10,7 @@ export default function IntroPython() {
 
     // REMOVIDA A ANOTAÇÃO DE TIPO (screen: string) e (as any)
     const navigateTo = (screen) => { 
-        router.push(`/(topicos)/(modulos_python)/${screen}`);
+        router.push(`/view/${screen}`);
     };
 
     return (
@@ -68,7 +68,7 @@ export default function IntroPython() {
             {/* Botões */}
             <Animatable.View animation="fadeInUp" duration={500} delay={400} style={{ gap: 12, marginBottom: 30 }}>
                 {/* Próximo Módulo */}
-                <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_python)/BasicoPy')}>
+                <TouchableOpacity onPress={() => router.push('/view/basicoPyView')}>
                     <LinearGradient
                         colors={["#43e97b", "#38f9d7"]}
                         start={{ x: 0, y: 0 }}
@@ -82,7 +82,7 @@ export default function IntroPython() {
                 </TouchableOpacity>
             
                 {/* Voltar aos Módulos */}
-                <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_python)')}>
+                <TouchableOpacity onPress={() => router.push('/view/topicosPyView')}>
                     <LinearGradient
                         colors={["#43e97b", "#38f9d7"]}
                         start={{ x: 0, y: 0 }}
@@ -96,7 +96,7 @@ export default function IntroPython() {
                 </TouchableOpacity>
             
                 {/* Voltar para Home */}
-                <TouchableOpacity onPress={() => router.push('/(tabs)/topicos')}>
+                <TouchableOpacity onPress={() => router.push('/view/topicosView')}>
                     <LinearGradient
                         colors={["#f953c6", "#b91d73"]}
                         start={{ x: 0, y: 0 }}

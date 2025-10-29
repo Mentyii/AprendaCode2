@@ -11,23 +11,23 @@ export default function TopicosScreen() {
       <Text style={styles.title}>Tópicos de Programação</Text>
 
       <ScrollView contentContainerStyle={styles.buttonContainer} showsVerticalScrollIndicator={false}>
-        <TouchableOpacity style={styles.buttonTopic} onPress={() => router.push('/(topicos)/(modulos_python)/IntroPy')}>
+        <TouchableOpacity style={styles.buttonTopic} onPress={() => router.push('/view/introPyView')}>
           <Text style={styles.buttonText}>Python</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.buttonTopic} onPress={() => router.push('/(topicos)/(modulos_js)/IntroJava')}>
+        <TouchableOpacity style={styles.buttonTopic} onPress={() => router.push('/view/introJavaView')}>
           <Text style={styles.buttonText}>JavaScript</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.buttonTopic} onPress={() => router.push('/(topicos)/(modulos_sql)/SQLintro')}>
+        <TouchableOpacity style={styles.buttonTopic} onPress={() => router.push('/view/sqlIntroView')}>
           <Text style={styles.buttonText}>SQL</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.buttonTopic} onPress={() => router.push('/(topicos)/(modulos_html)/IntroH')}>
+        <TouchableOpacity style={styles.buttonTopic} onPress={() => router.push('/view/introHView')}>
           <Text style={styles.buttonText}>HTML</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.buttonTopic} onPress={() => router.push('/(topicos)/(modulos_css)/IntroC')}>
+        <TouchableOpacity style={styles.buttonTopic} onPress={() => router.push('/view/introCView')}>
           <Text style={styles.buttonText}>CSS</Text>
         </TouchableOpacity>
       </ScrollView>

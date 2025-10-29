@@ -135,7 +135,7 @@ export default function QuizSQL() {
 
       {/* Botões */}
       <Animatable.View animation="fadeInUp" duration={500} delay={400} style={{ gap: 12 }}>
-        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_sql)/SQLintro')}>
+        <TouchableOpacity onPress={() => router.push('/view/slqIntroView')}>
           <LinearGradient
               colors={["#43e97b", "#38f9d7"]}
               start={{ x: 0, y: 0 }}
@@ -154,7 +154,7 @@ export default function QuizSQL() {
           </LinearGradient>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_sql)/ProjetosSQL')}>
+        <TouchableOpacity onPress={() => router.push('/view/projetosSQLView')}>
           <LinearGradient
               colors={["#43e97b", "#38f9d7"]}
               start={{ x: 0, y: 0 }}
@@ -173,7 +173,7 @@ export default function QuizSQL() {
           </LinearGradient>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => router.push('/(tabs)/topicos')}>
+        <TouchableOpacity onPress={() => router.push('/view/topicosView')}>
           <LinearGradient
             colors={["#f953c6", "#b91d73"]}
             start={{ x: 0, y: 0 }}

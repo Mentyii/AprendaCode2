@@ -110,7 +110,7 @@ export default function BasicoSQL() {
                 </LinearGradient>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => router.push('/(tabs)/topicos')}>
+            <TouchableOpacity onPress={() => router.push('/view/topicosView')}>
                 <LinearGradient
                     colors={["#f953c6", "#b91d73"]}
                     start={{ x: 0, y: 0 }}

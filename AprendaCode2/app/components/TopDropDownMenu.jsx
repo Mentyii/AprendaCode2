@@ -8,6 +8,11 @@ export default function TopDropDownMenu() {
   const openMenu = () => setVisible(true);
   const closeMenu = () => setVisible(false);
 
+  const handleNavigation = (path) => {
+    closeMenu(); // 1. Fecha o menu
+    router.push(path); // 2. Navega para a nova tela
+  };
+
   return (
     <Appbar.Header>
       <Menu
@@ -15,9 +20,8 @@ export default function TopDropDownMenu() {
         onDismiss={closeMenu}
         anchor={<Appbar.Action icon="menu" color="black" onPress={openMenu} />}
       >
-        <Menu.Item onPress={() => router.push('/view/autoresView')} title="Autores" />
-        <Menu.Item onPress={() => router.push('/view/homeView')} title="Home" />
-        <Menu.Item onPress={() => router.push('/view/topicosView')} title="Tópicos" />
+        <Menu.Item onPress={() => handleNavigation('/view/autoresView')} title="Autores" />
+        <Menu.Item onPress={() => handleNavigation('/view/topicosView')} title="Tópicos" />
       </Menu>
       <Appbar.Content title="AprendaCode" />
     </Appbar.Header>

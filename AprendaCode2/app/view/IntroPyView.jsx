@@ -8,19 +8,19 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 export default function IntroPy() {
   const router = useRouter();
-  const [completedModules, setCompletedModules] = useState<Record<string>>({});
+  const [completedModules, setCompletedModules] = useState({});
   const [showConfetti, setShowConfetti] = useState(false);
 
   const modulos = [
-    { id: "IntroPython", title: "🐍 Introdução Técnica", screen: "IntroPython" },
-    { id: "BasicoPy", title: "🔤 Básico do Python", screen: "BasicoPy" },
-    { id: "VariaveisPy", title: "📊 Variáveis e Tipos", screen: "VariaveisPy" },
-    { id: "EstruturasPy", title: "🔄 Estruturas de Controle", screen: "EstruturasPy" },
-    { id: "FuncoesPy", title: "🧩 Funções", screen: "FuncoesPy" },
-    { id: "ListasPy", title: "🗃️ Listas e Dicionários", screen: "ListasPy" },
-    { id: "InteracaoPy", title: "💬 Interação com Usuário", screen: "InteracaoPy" },
-    { id: "ProjetosPy", title: "🛠️ Projetos Práticos", screen: "ProjetosPy" },
-    { id: "QuizPy", title: "❓ Quiz", screen: "QuizPy" }
+    { id: "IntroPython", title: "🐍 Introdução Técnica", screen: "introPythonView" },
+    { id: "BasicoPy", title: "🔤 Básico do Python", screen: "basicoPyView" },
+    { id: "VariaveisPy", title: "📊 Variáveis e Tipos", screen: "variaveisPyView" },
+    { id: "EstruturasPy", title: "🔄 Estruturas de Controle", screen: "estruturasPyView" },
+    { id: "FuncoesPy", title: "🧩 Funções", screen: "funcoesPyView" },
+    { id: "ListasPy", title: "🗃️ Listas e Dicionários", screen: "listasPyView" },
+    { id: "InteracaoPy", title: "💬 Interação com Usuário", screen: "interacaoPyView" },
+    { id: "ProjetosPy", title: "🛠️ Projetos Práticos", screen: "projetosPyView" },
+    { id: "QuizPy", title: "❓ Quiz", screen: "quizPyView" }
   ];
 
   const completedCount = modulos.filter(m => completedModules[m.id]).length;
@@ -74,7 +74,16 @@ export default function IntroPy() {
   };
 
   return (
-    <ScrollView contentContainerStyle={{ padding: 20, backgroundColor: "#2c214a", paddingBottom: 50, width: '100%', height: '100%' }}>
+    // CORREÇÃO APLICADA AQUI: 
+    // 1. Substituído 'height: 100%' por 'minHeight: 100%' para permitir a rolagem.
+    // 2. Aumentado o paddingBottom para 80 para garantir que o último botão seja visível.
+    <ScrollView contentContainerStyle={{ 
+      padding: 20, 
+      backgroundColor: "#2c214a", 
+      paddingBottom: 80, // Aumentado para dar mais espaço de respiro
+      width: '100%', 
+      minHeight: '100%' // Garante que o conteúdo role quando necessário
+    }}>
       <Animatable.Text animation="fadeInDown" style={{ fontSize: 26, fontWeight: 'bold', color: '#DDD7ED', marginBottom: 20, textAlign: 'center' }}>
         🌟 Módulos de Python
       </Animatable.Text>
@@ -145,7 +154,7 @@ export default function IntroPy() {
             }}
           >
             <Text style={{ color: "white", fontSize: 16, fontWeight: 'bold' }}>
-              🏠 Voltar para Home
+              🏠 Voltar para Tópicos
             </Text>
           </LinearGradient>
         </TouchableOpacity>

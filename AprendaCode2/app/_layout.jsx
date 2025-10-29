@@ -4,6 +4,7 @@ import { Slot, usePathname } from 'expo-router'; // 👈 Importar usePathname
 import { View, StyleSheet, Text } from 'react-native'; // 👈 Adicionado Text para o 'loading'
 import { Provider as PaperProvider } from 'react-native-paper'; 
 import TopDropDownMenu from './components/TopDropDownMenu';
+import ButtomMenu from './components/ButtomMenu';
 
 // 🛑 IMPORTAR E INICIALIZAR FIREBASE (Apenas para o contexto de funcionamento)
 import { initializeApp } from 'firebase/app';
@@ -41,33 +42,37 @@ export default function RootLayout() {
     }, []);
 
     // ✅ 2. Lógica para esconder o menu
-    const isAuthScreen = pathname === '/view/loginView' || pathname === '/view/cadastroView' || pathname === '/';
+    // Adicionado '/view/loginView' e '/view/cadastroView' (assumindo estas rotas)
+    // E também '/', que deve ser a rota inicial
+    const isAuthScreen = pathname.includes('loginView') || pathname.includes('cadastroView') || pathname === '/';
     
     // Você só quer mostrar o menu se NÃO for uma tela de autenticação E o usuário estiver logado
+    // O menu inferior é tipicamente mostrado nas telas 'tabs'
     const shouldShowMenu = !isAuthScreen && user;
-
 
     if (initializing) {
         return (
              <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <Text>Carregando...</Text>
+                 <Text>Carregando...</Text>
              </View>
         );
     }
 
-    // 3. Estrutura de retorno com a renderização condicional
+    // 3. Estrutura de retorno com o BottomTabMenu adicionado no final
     return (
         <PaperProvider> 
             <View style={styles.container}>
-                {/* O menu aparece no topo, condicionalmente */}
+                
+                {/* Menu Superior: Aparece apenas se logado e não em telas Auth */}
                 {shouldShowMenu && <TopDropDownMenu />} 
                 
-                {/* O Slot renderiza a tela atual (Home, Login, Cadastro) */}
-                <Slot /> 
-                
-                {/* Se você tiver um menu inferior, aplique a mesma lógica de shouldShowMenu aqui */}
-                {/* {shouldShowMenu && <ButtomMenu />} */} 
+                {/* O Slot renderiza o conteúdo da rota atual */}
+                <View style={styles.content}>
+                    <Slot /> 
+                </View>
 
+                {/* Menu Inferior: Aparece apenas se logado e não em telas Auth */}
+                {shouldShowMenu && <ButtomMenu />} 
             </View>
         </PaperProvider>
     );
@@ -76,8 +81,9 @@ export default function RootLayout() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // Garante que o conteúdo comece logo abaixo do TopDropDownMenu
-        paddingTop: 0, 
         backgroundColor: '#fff'
+    },
+    content: {
+        flex: 1,
     }
 });

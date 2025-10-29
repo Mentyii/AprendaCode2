@@ -13,16 +13,16 @@ export default function IntroJava() {
   const [showConfetti, setShowConfetti] = useState(false);
 
   const modulos = [
-    { id: "IntroJS", title: "📘 Introdução Técnica", screen: "IntroJS" },
-    { id: "howtoUseJS", title: "🧭 Onde e como Usar", screen: "howtoUseJS" },
-    { id: "variaveisJS", title: "📦 Variáveis e Tipos", screen: "variaveisJS" },
-    { id: "estruturasJS", title: "🧱 Estruturas de Controle", screen: "estruturasJS" },
-    { id: "funcoesJS", title: "🔧 Funções", screen: "funcoesJS" },
-    { id: "objetosJS", title: "🧺 Arrays e Objetos", screen: "objetosJS" },
-    { id: "domJS", title: "🌐 DOM - Document Object Model", screen: "domJS" },
-    { id: "praticaJS", title: "🧪 Projeto Prático", screen: "praticaJS" },
-    { id: "sitesJS", title: "🔗 Sites para Prática", screen: "sitesJS" },
-    { id: "quizJS", title: "❓ Quiz (Múltipla escolha)", screen: "quizJS" }
+    { id: "IntroJS", title: "📘 Introdução Técnica", screen: "introJSView" },
+    { id: "howtoUseJS", title: "🧭 Onde e como Usar", screen: "howtoUseJSView" },
+    { id: "variaveisJS", title: "📦 Variáveis e Tipos", screen: "variaveisJSView" },
+    { id: "estruturasJS", title: "🧱 Estruturas de Controle", screen: "estruturasJSView" },
+    { id: "funcoesJS", title: "🔧 Funções", screen: "funcoesJSView" },
+    { id: "objetosJS", title: "🧺 Arrays e Objetos", screen: "objetosJSView" },
+    { id: "domJS", title: "🌐 DOM - Document Object Model", screen: "domJSView" },
+    { id: "praticaJS", title: "🧪 Projeto Prático", screen: "praticaJSView" },
+    { id: "sitesJS", title: "🔗 Sites para Prática", screen: "sitesJSView" },
+    { id: "quizJS", title: "❓ Quiz (Múltipla escolha)", screen: "quizJSView" }
   ];
 
   const completedCount = modulos.filter(m => completedModules[m.id]).length;
@@ -122,7 +122,7 @@ export default function IntroJava() {
           <TouchableOpacity
             style={{ flex: 1 }}
             // Nota: Removido 'as any' pois o código agora é JS/JSX puro.
-            onPress={() => router.push(`/(topicos)/(modulos_js)/${modulo.screen}`)}
+            onPress={() => router.push(`/view/${modulo.screen}`)}
           >
             <Text style={{
               fontSize: 17,
@@ -136,7 +136,7 @@ export default function IntroJava() {
       ))}
 
       <Animatable.View animation="fadeInUp" delay={modulos.length * 100 + 200}>
-        <TouchableOpacity style={{padding: 10}} onPress={() => router.push('/(tabs)/topicos')}>
+        <TouchableOpacity style={{padding: 10}} onPress={() => router.push('/view/topicosView')}>
           <LinearGradient
             colors={["#f953c6", "#b91d73"]}
             start={{ x: 0, y: 0 }}

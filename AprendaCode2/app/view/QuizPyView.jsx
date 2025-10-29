@@ -135,7 +135,7 @@ export default function QuizPy() {
 
       {/* Botões */}
       <Animatable.View animation="fadeInUp" duration={500} delay={400} style={{ gap: 12 }}>
-        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_python)/IntroPy')}>
+        <TouchableOpacity onPress={() => router.push('/view/introPyView')}>
           <LinearGradient
               colors={["#43e97b", "#38f9d7"]}
               start={{ x: 0, y: 0 }}
@@ -154,7 +154,7 @@ export default function QuizPy() {
           </LinearGradient>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_python)/ProjetosPy')}>
+        <TouchableOpacity onPress={() => router.push('/view/projetosPyView')}>
           <LinearGradient
             colors={["#43e97b", "#38f9d7"]}
             start={{ x: 0, y: 0 }}
@@ -173,7 +173,7 @@ export default function QuizPy() {
           </LinearGradient>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => router.push('/(tabs)/topicos')}>
+        <TouchableOpacity onPress={() => router.push('/view/topicosView')}>
           <LinearGradient
             colors={["#f953c6", "#b91d73"]}
             start={{ x: 0, y: 0 }}

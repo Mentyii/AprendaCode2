@@ -53,7 +53,7 @@ export default function VariaveisPy() {
 
       {/* Botões */}
       <Animatable.View animation="fadeInUp" duration={500} delay={400} style={{ gap: 12 }}>
-        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_python)/EstruturasPy')}>
+        <TouchableOpacity onPress={() => router.push('/view/estruturasPyView')}>
           <LinearGradient
             colors={["#43e97b", "#38f9d7"]}
             start={{ x: 0, y: 0 }}
@@ -72,7 +72,7 @@ export default function VariaveisPy() {
           </LinearGradient>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_python)/BasicoPy')}>
+        <TouchableOpacity onPress={() => router.push('/view/basicoPyView')}>
           <LinearGradient
             colors={["#43e97b", "#38f9d7"]}
             start={{ x: 0, y: 0 }}
@@ -91,7 +91,7 @@ export default function VariaveisPy() {
           </LinearGradient>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => router.push('/(tabs)/topicos')}>
+        <TouchableOpacity onPress={() => router.push('/view/topicosView')}>
           <LinearGradient
             colors={["#f953c6", "#b91d73"]}
             start={{ x: 0, y: 0 }}

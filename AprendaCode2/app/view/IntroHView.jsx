@@ -9,13 +9,13 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 export default function IntroH() {
   const router = useRouter();
-  const [completedModules, setCompletedModules] = useState<Record<string>>({});
+  const [completedModules, setCompletedModules] = useState({});
   const [showConfetti, setShowConfetti] = useState(false);
 
   const modulos = [
-    { id: "IntroHTML", title: "🌐 Introdução Técnica", screen: "IntroHTML" },
-    { id: "BasicoH", title: "🔤 Básico do HTML", screen: "BasicoH" },
-    { id: "QuizH", title: "🛠️ Quiz", screen: "QuizH" },
+    { id: "IntroHTML", title: "🌐 Introdução Técnica", screen: "introHTMLView" },
+    { id: "BasicoH", title: "🔤 Básico do HTML", screen: "basicoHView" },
+    { id: "QuizH", title: "🛠️ Quiz", screen: "quizHView" },
   ];
 
   const completedCount = modulos.filter(m => completedModules[m.id]).length;
@@ -69,7 +69,7 @@ export default function IntroH() {
   };
 
   return (
-    <ScrollView contentContainerStyle={{ padding: 20, backgroundColor: "#2c214a", paddingBottom: 50, width: '100%', height: '100%' }}>
+    <ScrollView contentContainerStyle={{ padding: 20, backgroundColor: "#2c214a", paddingBottom: 50, width: '100%', minHeight: '100%' }}>
       <Animatable.Text animation="fadeInDown" style={{ fontSize: 26, fontWeight: 'bold', color: '#DDD7ED', marginBottom: 20, textAlign: 'center' }}>
         🌟 Módulos de HTML
       </Animatable.Text>

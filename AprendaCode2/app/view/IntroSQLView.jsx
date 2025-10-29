@@ -8,7 +8,7 @@ export default function IntroSQL() {
     const router = useRouter();
 
     const navigateTo = (screen) => {
-        router.push(`/(topicos)/(modulos_sql)/${screen}`);
+        router.push(`/view/${screen}`);
     };
 
     return (

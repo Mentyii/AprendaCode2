@@ -40,7 +40,7 @@ export default function EstruturaSQL() {
 
       {/* Botões */}
       <Animatable.View animation="fadeInUp" delay={400} duration={600} style={{ gap: 12 }}>
-          <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_sql)/FuncoesSQL')}>
+          <TouchableOpacity onPress={() => router.push('/view/funcoesSQLView')}>
               <LinearGradient
                   colors={["#43e97b", "#38f9d7"]}
                   start={{ x: 0, y: 0 }}
@@ -59,7 +59,7 @@ export default function EstruturaSQL() {
               </LinearGradient>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_sql)/VariaveisSQL')}>
+          <TouchableOpacity onPress={() => router.push('/view/variaveisSQLView')}>
               <LinearGradient
                   colors={["#43e97b", "#38f9d7"]}
                   start={{ x: 0, y: 0 }}
@@ -78,7 +78,7 @@ export default function EstruturaSQL() {
               </LinearGradient>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => router.push('/(tabs)/topicos')}>
+          <TouchableOpacity onPress={() => router.push('/view/topicosView')}>
               <LinearGradient
                   colors={["#f953c6", "#b91d73"]}
                   start={{ x: 0, y: 0 }}

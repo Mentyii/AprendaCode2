@@ -63,7 +63,7 @@ export default function ProjetosSQL() {
 
             {/* Botões */}
             <Animatable.View animation="fadeInUp" delay={400} duration={600} style={{ gap: 12 }}>
-                <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_sql)/QuizSQL')}>
+                <TouchableOpacity onPress={() => router.push('/view/quizSQLView')}>
                     <LinearGradient
                         colors={["#43e97b", "#38f9d7"]}
                         start={{ x: 0, y: 0 }}
@@ -82,7 +82,7 @@ export default function ProjetosSQL() {
                     </LinearGradient>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => router.push('/(topicos)/(modulos_sql)/InteracaoSQL')}>
+                <TouchableOpacity onPress={() => router.push('/view/interacaoSQLView')}>
                     <LinearGradient
                         colors={["#43e97b", "#38f9d7"]}
                         start={{ x: 0, y: 0 }}
@@ -101,7 +101,7 @@ export default function ProjetosSQL() {
                     </LinearGradient>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => router.push('/(tabs)/topicos')}>
+                <TouchableOpacity onPress={() => router.push('/view/topicosView')}>
                     <LinearGradient
                         colors={["#f953c6", "#b91d73"]}
                         start={{ x: 0, y: 0 }}
