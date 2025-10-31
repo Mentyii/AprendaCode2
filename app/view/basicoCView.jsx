@@ -130,7 +130,4 @@ export default function BasicoC() {
     </ScrollView>
   );
 }
-<<<<<<< HEAD:app/view/basicoCView.jsx
 
-=======
->>>>>>> origin/main:AprendaCode2/app/view/basicoCView.jsx

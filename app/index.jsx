@@ -81,8 +81,4 @@ const styles = StyleSheet.create({
     fontSize: 18, // Valor de exemplo
     fontWeight: 'bold',
   },
-<<<<<<< HEAD:app/index.jsx
 });
-=======
-});
->>>>>>> origin/main:AprendaCode2/app/index.jsx

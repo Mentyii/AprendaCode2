@@ -1,11 +1,7 @@
 // app/view/QuizView.jsx
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-<<<<<<< HEAD:app/view/QuizView.jsx
 import QuizService from "../services/quizService";
-=======
-import QuizService from "../services/QuizServices";
->>>>>>> origin/main:AprendaCode2/app/view/QuizView.jsx
 
 export default function QuizView() {
   const quiz = QuizService.getQuizByLanguage("JavaScript");
@@ -27,8 +23,4 @@ export default function QuizView() {
       ))}
     </View>
   );
-<<<<<<< HEAD:app/view/QuizView.jsx
 }
-=======
-}
->>>>>>> origin/main:AprendaCode2/app/view/QuizView.jsx

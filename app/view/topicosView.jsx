@@ -19,11 +19,7 @@ export default function TopicosScreen() {
           <Text style={styles.buttonText}>JavaScript</Text>
         </TouchableOpacity>
 
-<<<<<<< HEAD:app/view/topicosView.jsx
         <TouchableOpacity style={styles.buttonTopic} onPress={() => router.push('/view/introSQLView')}>
-=======
-        <TouchableOpacity style={styles.buttonTopic} onPress={() => router.push('/view/sqlIntroView')}>
->>>>>>> origin/main:AprendaCode2/app/view/topicosView.jsx
           <Text style={styles.buttonText}>SQL</Text>
         </TouchableOpacity>
 
@@ -35,13 +31,8 @@ export default function TopicosScreen() {
           <Text style={styles.buttonText}>CSS</Text>
         </TouchableOpacity>
 
-<<<<<<< HEAD:app/view/topicosView.jsx
         <TouchableOpacity style={styles.buttonTopic} onPress={() => router.push('/view/quizHubView')}>
           <Text style={styles.buttonText}>Quizzes</Text>
-=======
-        <TouchableOpacity style={styles.buttonTopic} onPress={() => router.push('/view/QuizView')}>
-          <Text style={styles.buttonText}>QuizView Teste</Text>
->>>>>>> origin/main:AprendaCode2/app/view/topicosView.jsx
         </TouchableOpacity>
       </ScrollView>
     </View>
