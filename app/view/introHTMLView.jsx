@@ -179,4 +179,8 @@ export const styles = StyleSheet.create({
       fontWeight: 'bold',
     },
     // ... [Outros estilos omitidos para brevidade]
+<<<<<<< HEAD:app/view/introHTMLView.jsx
 });
+=======
+});
+>>>>>>> origin/main:AprendaCode2/app/view/introHTMLView.jsx

@@ -135,7 +135,11 @@ export default function QuizSQL() {
 
       {/* Botões */}
       <Animatable.View animation="fadeInUp" duration={500} delay={400} style={{ gap: 12 }}>
+<<<<<<< HEAD:app/view/quizSQLView.jsx
         <TouchableOpacity onPress={() => router.push('/view/introSQLView')}>
+=======
+        <TouchableOpacity onPress={() => router.push('/view/slqIntroView')}>
+>>>>>>> origin/main:AprendaCode2/app/view/quizSQLView.jsx
           <LinearGradient
               colors={["#43e97b", "#38f9d7"]}
               start={{ x: 0, y: 0 }}

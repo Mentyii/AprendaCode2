@@ -1,6 +1,10 @@
 import { Text, ScrollView, TouchableOpacity, View } from "react-native";
 import { useRouter } from 'expo-router';
+<<<<<<< HEAD:app/view/howtoUseJSView.jsx
 import { styles } from "./introPythonView";
+=======
+import { styles } from "../view/introPythonView";
+>>>>>>> origin/main:AprendaCode2/app/view/howtoUseJSView.jsx
 import * as Animatable from 'react-native-animatable';
 import { LinearGradient } from "expo-linear-gradient";
 

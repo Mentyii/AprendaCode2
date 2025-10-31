@@ -82,7 +82,11 @@ export default function IntroPython() {
                 </TouchableOpacity>
             
                 {/* Voltar aos Módulos */}
+<<<<<<< HEAD:app/view/introPythonView.jsx
                 <TouchableOpacity onPress={() => router.push('/view/topicosView')}>
+=======
+                <TouchableOpacity onPress={() => router.push('/view/topicosPyView')}>
+>>>>>>> origin/main:AprendaCode2/app/view/introPythonView.jsx
                     <LinearGradient
                         colors={["#43e97b", "#38f9d7"]}
                         start={{ x: 0, y: 0 }}
@@ -179,4 +183,8 @@ export const styles = StyleSheet.create({
       fontWeight: 'bold',
     },
     // ... [Outros estilos]
+<<<<<<< HEAD:app/view/introPythonView.jsx
 });
+=======
+});
+>>>>>>> origin/main:AprendaCode2/app/view/introPythonView.jsx

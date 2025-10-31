@@ -31,4 +31,3 @@ const styles = StyleSheet.create({
     color: '#007AFF'
   }
 });
-
