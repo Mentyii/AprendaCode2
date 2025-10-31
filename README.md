@@ -34,8 +34,4 @@
    git add .
    git commit -m "descrever_mudança"
    git push origin nome_da_branch
-      ```
-
-
-
-
+   ```
