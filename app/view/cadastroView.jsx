@@ -221,8 +221,4 @@ const styles = StyleSheet.create({
     marginTop: 8,
     gap: 16,
   },
-<<<<<<< HEAD:app/view/cadastroView.jsx
 });
-=======
-});
->>>>>>> origin/main:AprendaCode2/app/view/cadastroView.jsx

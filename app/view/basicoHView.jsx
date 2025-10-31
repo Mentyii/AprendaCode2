@@ -82,11 +82,7 @@ export default function BasicoHTML() {
               </LinearGradient>
           </TouchableOpacity>
 
-<<<<<<< HEAD:app/view/basicoHView.jsx
           <TouchableOpacity onPress={() => router.push('/view/introHTMLView')}>
-=======
-          <TouchableOpacity onPress={() => router.push('/view/introHTML')}>
->>>>>>> origin/main:AprendaCode2/app/view/basicoHView.jsx
               <LinearGradient
                   colors={["#43e97b", "#38f9d7"]}
                   start={{ x: 0, y: 0 }}

@@ -92,7 +92,4 @@ const styles = StyleSheet.create({
     height: 180
   }
 });
-<<<<<<< HEAD:app/view/autoresView.jsx
 
-=======
->>>>>>> origin/main:AprendaCode2/app/view/autoresView.jsx
