@@ -23,7 +23,8 @@
         "**/*GoogleService-Info.plist":true,
         "**/*assets":true,
         "**/*android":true,
-        "**/*ios":true
+        "**/*ios":true,
+        "**/*.gitattributes":true
     } 
     // Certifique-se de que não há vírgula extra aqui
 }
