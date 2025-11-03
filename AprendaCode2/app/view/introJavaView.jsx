@@ -21,8 +21,7 @@ export default function IntroJava() {
     { id: "objetosJS", title: "🧺 Arrays e Objetos", screen: "objetosJSView" },
     { id: "domJS", title: "🌐 DOM - Document Object Model", screen: "domJSView" },
     { id: "praticaJS", title: "🧪 Projeto Prático", screen: "praticaJSView" },
-    { id: "sitesJS", title: "🔗 Sites para Prática", screen: "sitesJSView" },
-    { id: "quizJS", title: "❓ Quiz (Múltipla escolha)", screen: "quizJSView" }
+    { id: "sitesJS", title: "🔗 Sites para Prática", screen: "sitesJSView" }
   ];
 
   const completedCount = modulos.filter(m => completedModules[m.id]).length;

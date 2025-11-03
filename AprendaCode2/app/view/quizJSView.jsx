@@ -4,28 +4,19 @@ import { useRouter } from 'expo-router';
 import { styles } from "./introPythonView";
 import * as Animatable from 'react-native-animatable';
 import { LinearGradient } from "expo-linear-gradient";
+import questionService from "/home/gabrielamartinssiqueira/AprendaCode2/AprendaCode2/app/services/questionService.js";
 
 export default function quizJS() {
   const router = useRouter();
 
-  const perguntas = [
-    {
-      enunciado: "1. Qual é a saída de typeof 42?",
-      opcoes: ["\"int\"", "\"number\"", "\"float\"", "\"string\""],
-      correta: 1,
-    },
-    {
-      enunciado: "2. Qual comando mostra um alerta na tela?",
-      opcoes: ["console.log()", "prompt()", "alert()", "write()"],
-      correta: 2,
-    },
-    {
-      enunciado: "3. Qual é a forma correta de declarar uma constante?",
-      opcoes: ["const nome = \"Ana\";", "var nome = \"Ana\";", "let nome = \"Ana\";", "nome := \"Ana\";"],
-      correta: 0,
-    },
-  ];
+  // ✅ Carrega as perguntas do questionService (baseadas em "q_js")
+  const perguntas = questionService.listByQuiz("q_js");
 
+  // ✅ Estado inicial
+  const [respostas, setRespostas] = useState(Array(perguntas.length).fill(null));
+  const [mostrarFeedback, setMostrarFeedback] = useState(Array(perguntas.length).fill(false));
+
+  // ✅ Desafios de código (mantidos)
   const desafios = [
     {
       titulo: "1. Crie uma função que retorne o quadrado de um número.",
@@ -69,18 +60,18 @@ export default function quizJS() {
     },
   ];
 
-  const [respostas, setRespostas] = useState(Array(perguntas.length).fill(null));
-  const [mostrarFeedback, setMostrarFeedback] = useState(Array(perguntas.length).fill(false));
   const [mostrarCodigos, setMostrarCodigos] = useState(Array(desafios.length).fill(false));
 
   return (
     <ScrollView contentContainerStyle={[styles.container, { paddingBottom: 40 }]}>      
+      {/* --- Quiz (Múltipla Escolha) --- */}
       <Animatable.View animation="fadeInUp" duration={500} style={[styles.card, { borderRadius: 12, padding: 16, marginBottom: 20, elevation: 2 }]}>
-        <Text style={[styles.titulo, { fontSize: 22, marginBottom: 10 }]}>Quiz (Múltipla Escolha)</Text>
+        <Text style={[styles.titulo, { fontSize: 22, marginBottom: 10 }]}>❓ Quiz (Múltipla Escolha)</Text>
 
         {perguntas.map((pergunta, index) => (
           <View key={index} style={{ marginBottom: 16 }}>
             <Text style={[styles.paragrafo, { marginBottom: 6 }]}>{pergunta.enunciado}</Text>
+
             {pergunta.opcoes.map((opcao, i) => (
               <TouchableOpacity
                 key={i}
@@ -92,22 +83,32 @@ export default function quizJS() {
                   setRespostas(novaResp);
                   setMostrarFeedback(mostrar);
                 }}
-                style={{ padding: 8, marginVertical: 2, backgroundColor: respostas[index] === i ? '#d0f0c0' : '#eee', borderRadius: 8 }}
+                style={{
+                  padding: 8,
+                  marginVertical: 2,
+                  backgroundColor: respostas[index] === i ? '#d0f0c0' : '#eee',
+                  borderRadius: 8
+                }}
               >
                 <Text>{opcao}</Text>
               </TouchableOpacity>
             ))}
+
+            {/* ✅ Ajuste: usa 'corretaIndex' */}
             {mostrarFeedback[index] && (
-              respostas[index] === pergunta.correta ? (
+              respostas[index] === pergunta.corretaIndex ? (
                 <Text style={{ color: 'green', marginTop: 4 }}>✅ Resposta correta!</Text>
               ) : (
-                <Text style={{ color: 'red', marginTop: 4 }}>❌ Errado. A resposta correta é: {pergunta.opcoes[pergunta.correta]}</Text>
+                <Text style={{ color: 'red', marginTop: 4 }}>
+                  ❌ Errado. A resposta correta é: {pergunta.opcoes[pergunta.corretaIndex]}
+                </Text>
               )
             )}
           </View>
         ))}
       </Animatable.View>
 
+      {/* --- Desafios de Código --- */}
       <Animatable.View animation="fadeInUp" duration={500} delay={200} style={[styles.card, { borderRadius: 12, padding: 16, marginBottom: 20, elevation: 2 }]}>
         <Text style={[styles.titulo, { fontSize: 22, marginBottom: 10 }]}>⚙️ Desafios de Código</Text>
 
@@ -124,6 +125,7 @@ export default function quizJS() {
             >
               <Text style={{ color: '#333' }}>{mostrarCodigos[i] ? '🔽 Ocultar Resposta' : '▶️ Mostrar Resposta'}</Text>
             </TouchableOpacity>
+
             {mostrarCodigos[i] && (
               <View style={{ backgroundColor: "#1e1e1e", padding: 12, borderRadius: 8, marginTop: 8 }}>
                 <Text style={{ color: "#eee", fontFamily: "monospace" }}>{desafio.codigo}</Text>
@@ -133,24 +135,24 @@ export default function quizJS() {
         ))}
       </Animatable.View>
 
-      {/* Botões */}
+      {/* --- Botões de Navegação --- */}
       <Animatable.View animation="fadeInUp" duration={500} delay={400} style={{ gap: 12 }}>
         <TouchableOpacity onPress={() => router.push('/view/introJavaView')}>
           <LinearGradient
-              colors={["#43e97b", "#38f9d7"]}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 0 }}
-              style={{
+            colors={["#43e97b", "#38f9d7"]}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+            style={{
               paddingVertical: 14,
               paddingHorizontal: 24,
               borderRadius: 30,
               alignItems: 'center',
               elevation: 3
-              }}
+            }}
           >
-              <Text style={{ color: "white", fontSize: 16, fontWeight: 'bold' }}>
-                🌟 Voltar aos Módulos de JavaScript →
-              </Text>
+            <Text style={{ color: "white", fontSize: 16, fontWeight: 'bold' }}>
+              🌟 Voltar aos Módulos de JavaScript →
+            </Text>
           </LinearGradient>
         </TouchableOpacity>
 
@@ -189,4 +191,3 @@ export default function quizJS() {
     </ScrollView>
   );
 }
-
