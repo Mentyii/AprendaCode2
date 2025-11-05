@@ -19,7 +19,7 @@ export default function TopicosScreen() {
           <Text style={styles.buttonText}>JavaScript</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.buttonTopic} onPress={() => router.push('/view/introSQLView')}>
+        <TouchableOpacity style={styles.buttonTopic} onPress={() => router.push('/view/sqlIntroView')}>
           <Text style={styles.buttonText}>SQL</Text>
         </TouchableOpacity>
 

@@ -100,9 +100,11 @@ export default function IntroSQL() {
 
 export const styles = StyleSheet.create({
     container: {
-        padding: 16,
-        backgroundColor: '#2c214a',
-        flexGrow: 1,
+        padding: 20, 
+        backgroundColor: "#2c214a",
+        paddingBottom: 50, 
+        width: '100%', 
+        minHeight: '100%'
     },
     card: {
         backgroundColor: '#3b3b3b',

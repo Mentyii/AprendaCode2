@@ -4,7 +4,7 @@ import { useRouter } from 'expo-router';
 import { styles } from "./introPythonView";
 import * as Animatable from 'react-native-animatable';
 import { LinearGradient } from "expo-linear-gradient";
-import questionService from "/home/gabrielamartinssiqueira/AprendaCode2/AprendaCode2/app/services/questionService.js";
+import questionService from "../services/questionService";
 
 export default function quizJS() {
   const router = useRouter();
@@ -137,43 +137,6 @@ export default function quizJS() {
 
       {/* --- Botões de Navegação --- */}
       <Animatable.View animation="fadeInUp" duration={500} delay={400} style={{ gap: 12 }}>
-        <TouchableOpacity onPress={() => router.push('/view/introJavaView')}>
-          <LinearGradient
-            colors={["#43e97b", "#38f9d7"]}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 0 }}
-            style={{
-              paddingVertical: 14,
-              paddingHorizontal: 24,
-              borderRadius: 30,
-              alignItems: 'center',
-              elevation: 3
-            }}
-          >
-            <Text style={{ color: "white", fontSize: 16, fontWeight: 'bold' }}>
-              🌟 Voltar aos Módulos de JavaScript →
-            </Text>
-          </LinearGradient>
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={() => router.push('/view/sitesJSView')}>
-          <LinearGradient
-            colors={["#43e97b", "#38f9d7"]}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 0 }}
-            style={{
-              paddingVertical: 14,
-              paddingHorizontal: 24,
-              borderRadius: 30,
-              alignItems: 'center',
-              elevation: 3
-            }}
-          >
-            <Text style={{ color: "white", fontSize: 16, fontWeight: 'bold' }}>
-              ← Anterior: Sites para Prática
-            </Text>
-          </LinearGradient>
-        </TouchableOpacity>
 
         <TouchableOpacity onPress={() => router.push('/view/topicosView')}>
           <LinearGradient
