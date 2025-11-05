@@ -20,8 +20,7 @@ export default function IntroSQL() {
         { id: "FuncoesSQL", title: "🧩 Funções", screen: "funcoesSQLView" },
         { id: "ListasSQL", title: "🗃️  Tabelas, Listas e Relacionamentos", screen: "listasSQLView" },
         { id: "InteracaoSQL", title: "💬 Interação com Usuário", screen: "interacaoSQLView" },
-        { id: "ProjetosSQL", title: "🛠️ Projetos Práticos", screen: "projetosSQLView" },
-        { id: "QuizSQL", title: "❓ Quiz", screen: "quizSQLView" }
+        { id: "ProjetosSQL", title: "🛠️ Projetos Práticos", screen: "projetosSQLView" }
     ];
 
     const completedCount = modulos.filter(m => completedModules[m.id]).length;

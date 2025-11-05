@@ -1,30 +1,16 @@
 import { Text, View, ScrollView, TouchableOpacity } from "react-native";
 import { useState } from "react";
-import { useRouter } from 'expo-router';
+import { useRouter } from "expo-router";
 import { styles } from "./introSQLView";
-import * as Animatable from 'react-native-animatable';
+import * as Animatable from "react-native-animatable";
 import { LinearGradient } from "expo-linear-gradient";
+import questionService from "../services/questionService"; 
 
 export default function QuizSQL() {
   const router = useRouter();
 
-  const perguntas = [
-    {
-      enunciado: "1. Qual comando é usado para selecionar dados de uma tabela?",
-      opcoes: ["GET", "SELECT", "FETCH", "SHOW"],
-      correta: 1,
-    },
-    {
-      enunciado: "2. Qual palavra-chave é usada para remover registros?",
-      opcoes: ["REMOVE", "DELETE", "DROP", "CLEAR"],
-      correta: 1,
-    },
-    {
-      enunciado: "3. Qual comando cria uma nova tabela no banco de dados?",
-      opcoes: ["MAKE TABLE", "ADD TABLE", "CREATE TABLE", "INSERT TABLE"],
-      correta: 2,
-    },
-  ];
+  
+  const perguntas = questionService.listByQuiz("q_sql");
 
   const desafios = [
     {
@@ -47,26 +33,6 @@ export default function QuizSQL() {
       titulo: "5. Crie uma tabela 'vendas' com colunas id, produto e valor.",
       codigo: "CREATE TABLE vendas (\n  id INT,\n  produto VARCHAR(100),\n  valor DECIMAL(10,2)\n);"
     },
-    {
-      titulo: "6. Selecione apenas os clientes com idade maior que 18.",
-      codigo: "SELECT * FROM clientes WHERE idade > 18;"
-    },
-    {
-      titulo: "7. Conte o número total de produtos na tabela.",
-      codigo: "SELECT COUNT(*) FROM produtos;"
-    },
-    {
-      titulo: "8. Liste os nomes únicos da tabela 'clientes'.",
-      codigo: "SELECT DISTINCT nome FROM clientes;"
-    },
-    {
-      titulo: "9. Ordene os produtos pelo preço de forma decrescente.",
-      codigo: "SELECT * FROM produtos ORDER BY preco DESC;"
-    },
-    {
-      titulo: "10. Apague a tabela 'vendas'.",
-      codigo: "DROP TABLE vendas;"
-    },
   ];
 
   const [respostas, setRespostas] = useState(Array(perguntas.length).fill(null));
@@ -74,13 +40,23 @@ export default function QuizSQL() {
   const [mostrarCodigos, setMostrarCodigos] = useState(Array(desafios.length).fill(false));
 
   return (
-    <ScrollView contentContainerStyle={[styles.container, { paddingBottom: 40}]}>      
-      <Animatable.View animation="fadeInUp" duration={500} style={[styles.card, { borderRadius: 12, padding: 16, marginBottom: 20, elevation: 2 }]}>
-        <Text style={[styles.titulo, { fontSize: 22, marginBottom: 10 }]}>Quiz (Múltipla Escolha)</Text>
+    <ScrollView contentContainerStyle={[styles.container, { paddingBottom: 40 }]}>      
+      {/* --- QUIZ --- */}
+      <Animatable.View 
+        animation="fadeInUp" 
+        duration={500} 
+        style={[styles.card, { borderRadius: 12, padding: 16, marginBottom: 20, elevation: 2 }]}
+      >
+        <Text style={[styles.titulo, { fontSize: 22, marginBottom: 10 }]}>
+          Quiz (Múltipla Escolha)
+        </Text>
 
         {perguntas.map((pergunta, index) => (
           <View key={index} style={{ marginBottom: 16 }}>
-            <Text style={[styles.paragrafo, { marginBottom: 6 }]}>{pergunta.enunciado}</Text>
+            <Text style={[styles.paragrafo, { marginBottom: 6 }]}>
+              {pergunta.enunciado}
+            </Text>
+
             {pergunta.opcoes.map((opcao, i) => (
               <TouchableOpacity
                 key={i}
@@ -92,24 +68,40 @@ export default function QuizSQL() {
                   setRespostas(novaResp);
                   setMostrarFeedback(mostrar);
                 }}
-                style={{ padding: 8, marginVertical: 2, backgroundColor: respostas[index] === i ? '#d0f0c0' : '#eee', borderRadius: 8 }}
+                style={{
+                  padding: 8,
+                  marginVertical: 2,
+                  backgroundColor: respostas[index] === i ? '#d0f0c0' : '#eee',
+                  borderRadius: 8
+                }}
               >
                 <Text>{opcao}</Text>
               </TouchableOpacity>
             ))}
+
             {mostrarFeedback[index] && (
-              respostas[index] === pergunta.correta ? (
+              respostas[index] === pergunta.corretaIndex ? (
                 <Text style={{ color: 'green', marginTop: 4 }}>✅ Resposta correta!</Text>
               ) : (
-                <Text style={{ color: 'red', marginTop: 4 }}>❌ Errado. A resposta correta é: {pergunta.opcoes[pergunta.correta]}</Text>
+                <Text style={{ color: 'red', marginTop: 4 }}>
+                  ❌ Errado. A resposta correta é: {pergunta.opcoes[pergunta.corretaIndex]}
+                </Text>
               )
             )}
           </View>
         ))}
       </Animatable.View>
 
-      <Animatable.View animation="fadeInUp" duration={500} delay={200} style={[styles.card, { borderRadius: 12, padding: 16, marginBottom: 20, elevation: 2 }]}>
-        <Text style={[styles.titulo, { fontSize: 22, marginBottom: 10 }]}>⚙️ Desafios de Código</Text>
+      {/* --- DESAFIOS DE CÓDIGO --- */}
+      <Animatable.View 
+        animation="fadeInUp" 
+        duration={500} 
+        delay={200} 
+        style={[styles.card, { borderRadius: 12, padding: 16, marginBottom: 20, elevation: 2 }]}
+      >
+        <Text style={[styles.titulo, { fontSize: 22, marginBottom: 10 }]}>
+          ⚙️ Desafios de Código
+        </Text>
 
         {desafios.map((desafio, i) => (
           <View key={i} style={{ marginBottom: 16 }}>
@@ -122,63 +114,37 @@ export default function QuizSQL() {
               }}
               style={{ backgroundColor: '#e0e0e0', padding: 8, borderRadius: 8 }}
             >
-              <Text style={{ color: '#333' }}>{mostrarCodigos[i] ? '🔽 Ocultar Resposta' : '▶️ Mostrar Resposta'}</Text>
+              <Text style={{ color: '#333' }}>
+                {mostrarCodigos[i] ? '🔽 Ocultar Resposta' : '▶️ Mostrar Resposta'}
+              </Text>
             </TouchableOpacity>
+
             {mostrarCodigos[i] && (
               <View style={{ backgroundColor: "#1e1e1e", padding: 12, borderRadius: 8, marginTop: 8 }}>
-                <Text style={{ color: "#eee", fontFamily: "monospace" }}>{desafio.codigo}</Text>
+                <Text style={{ color: "#eee", fontFamily: "monospace" }}>
+                  {desafio.codigo}
+                </Text>
               </View>
             )}
           </View>
         ))}
       </Animatable.View>
 
-      {/* Botões */}
+      {/* --- BOTÕES DE NAVEGAÇÃO --- */}
       <Animatable.View animation="fadeInUp" duration={500} delay={400} style={{ gap: 12 }}>
-        <TouchableOpacity onPress={() => router.push('/view/introSQLView')}>
-          <LinearGradient
-              colors={["#43e97b", "#38f9d7"]}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 0 }}
-              style={{
-              paddingVertical: 14,
-              paddingHorizontal: 24,
-              borderRadius: 30,
-              alignItems: 'center',
-              elevation: 3
-              }}
-          >
-              <Text style={{ color: "white", fontSize: 16, fontWeight: 'bold' }}>
-                🌟 Voltar aos Módulos de SQL →
-              </Text>
-          </LinearGradient>
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={() => router.push('/view/projetosSQLView')}>
-          <LinearGradient
-              colors={["#43e97b", "#38f9d7"]}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 0 }}
-              style={{
-              paddingVertical: 14,
-              paddingHorizontal: 24,
-              borderRadius: 30,
-              alignItems: 'center',
-              elevation: 3
-              }}
-          >
-              <Text style={{ color: "white", fontSize: 16, fontWeight: 'bold' }}>
-              ← Anterior: Projetos Práticos
-              </Text>
-          </LinearGradient>
-        </TouchableOpacity>
 
         <TouchableOpacity onPress={() => router.push('/view/topicosView')}>
           <LinearGradient
             colors={["#f953c6", "#b91d73"]}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 0 }}
-            style={{ paddingVertical: 14, paddingHorizontal: 24, borderRadius: 30, alignItems: 'center', elevation: 3 }}
+            style={{
+              paddingVertical: 14,
+              paddingHorizontal: 24,
+              borderRadius: 30,
+              alignItems: 'center',
+              elevation: 3
+            }}
           >
             <Text style={{ color: "white", fontSize: 16, fontWeight: 'bold' }}>
               🏠 Voltar para Home
@@ -189,4 +155,3 @@ export default function QuizSQL() {
     </ScrollView>
   );
 }
-

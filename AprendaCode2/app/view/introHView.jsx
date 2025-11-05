@@ -14,8 +14,7 @@ export default function IntroH() {
 
   const modulos = [
     { id: "IntroHTML", title: "🌐 Introdução Técnica", screen: "introHTMLView" },
-    { id: "BasicoH", title: "🔤 Básico do HTML", screen: "basicoHView" },
-    { id: "QuizH", title: "🛠️ Quiz", screen: "quizHView" },
+    { id: "BasicoH", title: "🔤 Básico do HTML", screen: "basicoHView" }
   ];
 
   const completedCount = modulos.filter(m => completedModules[m.id]).length;

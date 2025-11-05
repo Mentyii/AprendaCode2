@@ -19,8 +19,7 @@ export default function IntroPy() {
     { id: "FuncoesPy", title: "🧩 Funções", screen: "funcoesPyView" },
     { id: "ListasPy", title: "🗃️ Listas e Dicionários", screen: "listasPyView" },
     { id: "InteracaoPy", title: "💬 Interação com Usuário", screen: "interacaoPyView" },
-    { id: "ProjetosPy", title: "🛠️ Projetos Práticos", screen: "projetosPyView" },
-    { id: "QuizPy", title: "❓ Quiz", screen: "quizPyView" }
+    { id: "ProjetosPy", title: "🛠️ Projetos Práticos", screen: "projetosPyView" }
   ];
 
   const completedCount = modulos.filter(m => completedModules[m.id]).length;

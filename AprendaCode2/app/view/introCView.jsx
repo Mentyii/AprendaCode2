@@ -15,8 +15,7 @@ export default function IntroC() {
 
   const modulos = [
     { id: "IntroCSS", title: "🖼️ Introdução Técnica", screen: "introCSSView" },
-    { id: "BasicoC", title: "🔤 Básico do CSS", screen: "basicoCView" },
-    { id: "QuizC", title: "🛠️ Quiz", screen: "quizCView" },
+    { id: "BasicoC", title: "🔤 Básico do CSS", screen: "basicoCView" }
   ];
 
   const completedCount = modulos.filter(m => completedModules[m.id]).length;
