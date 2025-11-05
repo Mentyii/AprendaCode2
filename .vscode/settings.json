@@ -17,7 +17,14 @@
         "**/eslint.config.js": true,
         "**/*app.json": true,
         "**/*.gitignore": true,
-        "**/*.vscode":true
+        "**/*.vscode":true,
+        "**/*metro.config.js":true,
+        "**/*google-services.json":true,
+        "**/*GoogleService-Info.plist":true,
+        "**/*assets":true,
+        "**/*android":true,
+        "**/*ios":true,
+        "**/*.gitattributes":true
     } 
     // Certifique-se de que não há vírgula extra aqui
 }
