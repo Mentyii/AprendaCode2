@@ -5,7 +5,7 @@ const QUESTIONS = [
     quizId: "q_js",
     enunciado: "Qual tipo de dado ...?", 
     opcoes: ["A","B","C","D"], 
-    corretaIndex: 1, 
+    corretaIndex: 3, 
     explicacao: "..." 
   },
 
