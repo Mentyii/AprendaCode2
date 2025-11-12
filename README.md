@@ -56,11 +56,11 @@ git clone https://github.com/Mentyii/AprendaCode2.git
 cd aprenda-code2
 npm install
 
-**Para rodar no ambiente web:**
+Para rodar no ambiente web:
 
 npm run web
 
-**Para rodar no ambiente mobile (via Expo):**
+Para rodar no ambiente mobile (via Expo):
 
 npx expo start
 
