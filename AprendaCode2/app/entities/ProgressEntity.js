@@ -7,6 +7,12 @@ export default class ProgressEntity {
     this.ultimaVisitaEm = ultimaVisitaEm ? new Date(ultimaVisitaEm) : new Date();
     this.tempoGastoSeg = Number.isFinite(tempoGastoSeg) ? tempoGastoSeg : 0;
   }
-  static fromDto(dto = {}) { return new ProgressEntity(dto); }
-  get key() { return this.id; }
+
+  static fromDto(dto = {}) {
+    return new ProgressEntity(dto);
+  }
+
+  get key() {
+    return this.id;
+  }
 }

@@ -1,32 +1,67 @@
-// IntroJS.jsx
-import React from 'react'; // Importação explícita do React (boa prática em JSX)
-import { View, ScrollView, TouchableOpacity, Text, Pressable, Animated } from "react-native";
+// introJSView.jsx
+import React, { useEffect } from 'react'; // Importação explícita do React e do useEffect
+import { View, ScrollView, TouchableOpacity, Text } from "react-native";
 import { useRouter } from 'expo-router';
 import * as Animatable from 'react-native-animatable';
 import { LinearGradient } from 'expo-linear-gradient';
-import { styles } from "./introPythonView";
+import { styles } from "./introPythonView"; // Reaproveita estilos já existentes
+import progressService from "../services/progressService"; // ✅ Novo import
+
 
 export default function IntroJS() {
     const router = useRouter();
 
-    // REMOVIDA A ANOTAÇÃO DE TIPO (screen: string) e (as any)
+    // ✅ Registra automaticamente que o usuário visitou esta lição
+    useEffect(() => {
+        const userId = "1"; // Pode vir de um login no futuro
+        const lessonId = "introJS"; // ID único da lição
+        progressService.markVisited({ userId, lessonId });
+    }, []);
+
+    // ✅ Função de navegação genérica (opcional)
     const navigateTo = (screen) => {
         router.push(`/view/${screen}`);
     };
- 
+
     return (
-        <ScrollView contentContainerStyle={{ padding: 20, backgroundColor: "#2c214a", paddingBottom: 50 }}>
-            <Animatable.Text animation="fadeInDown" style={{ fontSize: 26, fontWeight: 'bold', color: '#DDD7ED', marginBottom: 20, textAlign: 'center' }}>
+        <ScrollView
+            contentContainerStyle={{
+                padding: 20,
+                backgroundColor: "#2c214a",
+                paddingBottom: 50
+            }}
+        >
+            <Animatable.Text
+                animation="fadeInDown"
+                style={{
+                    fontSize: 26,
+                    fontWeight: 'bold',
+                    color: '#DDD7ED',
+                    marginBottom: 20,
+                    textAlign: 'center'
+                }}
+            >
                 📘 Módulo 1: Introdução ao JavaScript
             </Animatable.Text>
 
             {/* CARD de Introdução */}
-            <Animatable.View animation="fadeInUp" style={{ backgroundColor: "#3b3b3b", padding: 16, borderRadius: 14, elevation: 2, marginBottom: 20, }}>
+            <Animatable.View
+                animation="fadeInUp"
+                style={{
+                    backgroundColor: "#3b3b3b",
+                    padding: 16,
+                    borderRadius: 14,
+                    elevation: 2,
+                    marginBottom: 20,
+                }}
+            >
                 <Text style={[styles.titulo, { fontSize: 18, marginBottom: 10 }]}>
                     O que é JavaScript?
                 </Text>
                 <Text style={[styles.paragrafo]}>
-                    JavaScript é uma linguagem de programação de alto nível, interpretada e baseada em objetos. Foi criada por Brendan Eich em 1995 e é amplamente usada no desenvolvimento web para tornar os sites mais dinâmicos e interativos.
+                    JavaScript é uma linguagem de programação de alto nível, interpretada e baseada em objetos.
+                    Foi criada por Brendan Eich em 1995 e é amplamente usada no desenvolvimento web
+                    para tornar os sites mais dinâmicos e interativos.
                 </Text>
 
                 <Text style={[styles.subtitulo]}>Características do JavaScript:</Text>
@@ -41,7 +76,9 @@ export default function IntroJS() {
                 <Text style={styles.itemLista}>- Google Maps: interatividade no mapa, zoom.</Text>
                 <Text style={styles.itemLista}>- Facebook: feed dinâmico, curtidas em tempo real.</Text>
                 <Text style={styles.itemLista}>- Spotify Web: player de áudio, playlists dinâmicas.</Text>
-                <Text style={[styles.itemLista, { marginVertical: 8 }]}>✨ JavaScript é a "alma" da experiência do usuário nesses sites.</Text>
+                <Text style={[styles.itemLista, { marginVertical: 8 }]}>
+                    ✨ JavaScript é a "alma" da experiência do usuário nesses sites.
+                </Text>
 
                 <Text style={[styles.subtitulo]}>Benefícios de aprender JavaScript:</Text>
                 <Text style={styles.itemLista}>- Alta demanda no mercado.</Text>
@@ -63,16 +100,22 @@ export default function IntroJS() {
                 <Text style={styles.itemLista}>- Cometa erros e aprenda com eles.</Text>
             </Animatable.View>
 
-            
             {/* Botões */}
             <Animatable.View animation="fadeInUp" delay={400} duration={600} style={{ gap: 12 }}>
                 {/* Botão Próximo */}
-                <TouchableOpacity onPress={() => router.push('/view/howtoUseJSView')}>
+                <TouchableOpacity
+                    onPress={async () => {
+                        const userId = "1";
+                        const lessonId = "introJS";
+                        await progressService.markCompleted({ userId, lessonId }); // ✅ marca como concluída
+                        router.push('/view/howtoUseJSView');
+                    }}
+                >
                     <LinearGradient
                         colors={["#43e97b", "#38f9d7"]}
                         start={{ x: 0, y: 0 }}
                         end={{ x: 1, y: 0 }}
-                        style={styles.gradientButton} // Usando estilo do IntroPython.jsx
+                        style={styles.gradientButton}
                     >
                         <Text style={styles.gradientButtonText}>
                             Próximo: Onde e como Usar →
@@ -80,8 +123,7 @@ export default function IntroJS() {
                     </LinearGradient>
                 </TouchableOpacity>
 
-                {/* Botão Voltar ao Módulos */}
-                {/* Nota: A rota '/view/introJavaView' parece estranha para voltar aos módulos JS. Mantendo a rota original, mas alertando. */}
+                {/* Botão Voltar aos Módulos */}
                 <TouchableOpacity onPress={() => router.push('/view/introJavaView')}>
                     <LinearGradient
                         colors={["#43e97b", "#38f9d7"]}
