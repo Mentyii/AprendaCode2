@@ -38,7 +38,6 @@ export default function QuizHistoryView() {
             </TouchableOpacity>
           ))
         )}
-      </ScrollView>
 
       {/* Botão para limpar histórico */}
       <TouchableOpacity
@@ -50,14 +49,15 @@ export default function QuizHistoryView() {
       >
         <Text style={styles.buttonText}>Limpar Histórico</Text>
       </TouchableOpacity>
+      </ScrollView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#2c214a", padding: 20 },
+  container: { flex: 1, backgroundColor: "#2c214a", padding: 20},
   title: { color: "#fff", fontSize: 26, fontWeight: "bold", textAlign: "center", marginVertical: 20 },
-  scroll: { paddingBottom: 40 },
+  scroll: { paddingBottom: 40,minHeight: '100%'},
   item: { backgroundColor: "#5B4E82", padding: 15, borderRadius: 10, marginBottom: 15 },
   quizName: { color: "#fff", fontSize: 20, fontWeight: "bold" },
   score: { color: "#b8f7c8", marginTop: 5 },
