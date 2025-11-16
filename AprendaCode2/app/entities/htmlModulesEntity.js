@@ -1,4 +1,4 @@
-// /services/modules/htmlModules.js
+// /services/modules/htmlModulesEntity.js
 
 export const HTMLContent = {
   id: "html",

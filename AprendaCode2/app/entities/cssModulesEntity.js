@@ -1,4 +1,4 @@
-// /services/modules/cssModules.js
+// /services/modules/cssModulesEntity.js
 
 export const CSSContent = {
   id: "css",

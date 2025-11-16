@@ -1,9 +1,9 @@
 // /services/languageService.js
-import { PythonContent } from "./modules/pythonModules";
-import { JavascriptContent } from "./modules/javascriptModules";
-import { SQLContent } from "./modules/sqlModules";
-import { HTMLContent } from "./modules/htmlModules";
-import { CSSContent } from "./modules/cssModules";
+import { PythonContent } from "../entities/pythonModulesEntity";
+import { JavascriptContent } from "../entities/javascriptModulesEntity";
+import { SQLContent } from "../entities/sqlModulesEntity";
+import { HTMLContent } from "../entities/htmlModulesEntity";
+import { CSSContent } from "../entities/cssModulesEntity";
 
 
 export const languageService = {
