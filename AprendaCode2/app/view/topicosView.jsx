@@ -1,7 +1,16 @@
-// /(tabs)/topicos.tsx
+// /tabs/topicos.tsx
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
 import { useRouter } from 'expo-router';
+
+// Lista centralizada das linguagens disponíveis no app
+const LANGUAGES = [
+  { id: "python", name: "Python" },
+  { id: "javascript", name: "JavaScript" },
+  { id: "sql", name: "SQL" },
+  { id: "html", name: "HTML" },
+  { id: "css", name: "CSS" },
+];
 
 export default function TopicosScreen() {
   const router = useRouter();
@@ -10,30 +19,32 @@ export default function TopicosScreen() {
     <View style={styles.container}>
       <Text style={styles.title}>Tópicos de Programação</Text>
 
-      <ScrollView contentContainerStyle={styles.buttonContainer} showsVerticalScrollIndicator={false}>
-        <TouchableOpacity style={styles.buttonTopic} onPress={() => router.push('/view/introPyView')}>
-          <Text style={styles.buttonText}>Python</Text>
-        </TouchableOpacity>
+      <ScrollView
+        contentContainerStyle={styles.buttonContainer}
+        showsVerticalScrollIndicator={false}
+      >
 
-        <TouchableOpacity style={styles.buttonTopic} onPress={() => router.push('/view/introJavaView')}>
-          <Text style={styles.buttonText}>JavaScript</Text>
-        </TouchableOpacity>
+        {/* 🔥 Botões criados dinamicamente */}
+        {LANGUAGES.map(lang => (
+          <TouchableOpacity
+            key={lang.id}
+            style={styles.buttonTopic}
+            onPress={() =>
+              router.push(`/view/modulosView?lang=${lang.id}`)
+            }
+          >
+            <Text style={styles.buttonText}>{lang.name}</Text>
+          </TouchableOpacity>
+        ))}
 
-        <TouchableOpacity style={styles.buttonTopic} onPress={() => router.push('/view/sqlIntroView')}>
-          <Text style={styles.buttonText}>SQL</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.buttonTopic} onPress={() => router.push('/view/introHView')}>
-          <Text style={styles.buttonText}>HTML</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.buttonTopic} onPress={() => router.push('/view/introCView')}>
-          <Text style={styles.buttonText}>CSS</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.buttonTopic} onPress={() => router.push('/view/quizHubView')}>
+        {/* 🔥 Quizzes (rota separada) */}
+        <TouchableOpacity
+          style={styles.buttonTopic}
+          onPress={() => router.push('/view/quizHubView')}
+        >
           <Text style={styles.buttonText}>Quizzes</Text>
         </TouchableOpacity>
+
       </ScrollView>
     </View>
   );
@@ -78,4 +89,3 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 });
-

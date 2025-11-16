@@ -1,23 +1,44 @@
-import QuizResultEntity from "../entities/QuizResultEntity";
-let RESULTS = [];
-function uid(){ try { return (Date.now().toString(36)+Math.random().toString(36).slice(2)); } catch(e) { return String(Date.now()); } }
-export default {
-  save({ quizId, userId, acertos, total, percentual = null, realizadoEm = new Date() }) {
-    const dto = { id: uid(), quizId, userId, acertos, total, percentual, realizadoEm };
-    const entity = QuizResultEntity.fromDto(dto);
-    RESULTS.push(entity);
-    return entity;
-  },
-  getLastByQuiz(quizId, userId) {
-    const arr = RESULTS.filter(r => r.quizId === String(quizId) && r.userId === String(userId));
-    return arr.length ? arr[arr.length - 1] : null;
-  },
-  getStatsByLanguage(languageId, userId) {
-    const userResults = RESULTS.filter(r => r.userId === String(userId));
-    if (!userResults.length) return { tentativas: 0, melhor: 0, media: 0 };
-    const tentativas = userResults.length;
-    const melhor = Math.max(...userResults.map(r => r.percentual));
-    const media = Math.round(userResults.reduce((s,r)=>s+r.percentual,0)/tentativas);
-    return { tentativas, melhor, media };
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+const STORAGE_KEY = 'QUIZ_RESULTS';
+
+// ✅ Salva o resultado de um quiz
+export async function saveQuizResult(result) {
+  try {
+    const existing = await AsyncStorage.getItem(STORAGE_KEY);
+    const parsed = existing ? JSON.parse(existing) : [];
+
+    const newResult = {
+      ...result,
+      quizName: result.quiz?.toUpperCase(), // mostra nome do quiz no histórico
+      date: new Date().toISOString(),
+    };
+
+    parsed.push(newResult);
+    await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(parsed));
+    console.log('✅ Resultado salvo:', newResult);
+  } catch (error) {
+    console.error('❌ Erro ao salvar resultado:', error);
   }
-};
+}
+
+// ✅ Retorna todos os resultados salvos
+export async function getAllResults() {
+  try {
+    const stored = await AsyncStorage.getItem(STORAGE_KEY);
+    return stored ? JSON.parse(stored) : [];
+  } catch (error) {
+    console.error('❌ Erro ao buscar resultados:', error);
+    return [];
+  }
+}
+
+// 🧹 Limpa todos os resultados (usado no botão “Limpar Histórico”)
+export async function clearResults() {
+  try {
+    await AsyncStorage.removeItem(STORAGE_KEY);
+    console.log('🧽 Histórico de quizzes limpo com sucesso!');
+  } catch (error) {
+    console.error('❌ Erro ao limpar resultados:', error);
+  }
+}

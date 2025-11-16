@@ -34,6 +34,14 @@ export default function QuizHubView() {
       >
         <Text style={styles.historyText}>📜 Ver Histórico</Text>
       </TouchableOpacity>
+
+      <TouchableOpacity 
+        style={[styles.button, { backgroundColor: '#f953c6' }]}
+        onPress={() => router.push('/view/topicosView')}>
+            <Text style={styles.buttonText}>
+              Voltar para Tópicos
+            </Text>
+        </TouchableOpacity>
     </ScrollView>
   );
 }

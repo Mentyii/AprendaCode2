@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from "react-native";
 import { useRouter, useLocalSearchParams } from "expo-router";
-import { getAllResults } from "../services/quizResultStorage";
+import { getAllResults } from "../services/quizResultService";
 
 export default function QuizResultView() {
   const { quiz } = useLocalSearchParams();

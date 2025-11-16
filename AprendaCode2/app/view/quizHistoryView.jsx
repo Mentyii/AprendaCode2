@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from "react-native";
 import { useRouter } from "expo-router";
-import { getAllResults, clearResults } from "../services/quizResultStorage";
+import { getAllResults, clearResults } from "../services/quizResultService";
 
 export default function QuizHistoryView() {
   const [history, setHistory] = useState([]);
@@ -49,6 +49,14 @@ export default function QuizHistoryView() {
       >
         <Text style={styles.buttonText}>Limpar Histórico</Text>
       </TouchableOpacity>
+
+      <TouchableOpacity 
+        style={[styles.button, { backgroundColor: '#f953c6' }]}
+        onPress={() => router.push('/view/quizHubView')}>
+            <Text style={styles.buttonText}>
+              Voltar para Quizzes
+            </Text>
+        </TouchableOpacity>
       </ScrollView>
     </View>
   );
