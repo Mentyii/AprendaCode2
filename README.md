@@ -64,3 +64,15 @@ Para rodar no ambiente mobile (via Expo):
 
 npx expo start
 
+---
+
+Integrantes
+
+André Mendes Aguiar, 
+Gabriela Martins Siqueira,
+Letícia Gonçalves Teixeira,
+Matheus Nunes dos Santos,
+Tiago Dias Correia,
+Vinícius Augusto Marques Araújo,
+William Hideyuki Ibaraki.
+
