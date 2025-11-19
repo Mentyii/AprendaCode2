@@ -18,7 +18,7 @@ Dessa forma, o aplicativo contribui diretamente para o desenvolvimento tecnológ
 
 ## Status do Projeto
 
-`Em desenvolvimento`
+`Concluído`
 
 ---
 
