@@ -14,7 +14,7 @@ export default function AutoresScreen() {
 
       {/* Lista de autores */}
       <View style={styles.list}>
-        <Text style={styles.author}>• Andre Mendes Aguiar</Text>
+        <Text style={styles.author}>• André Mendes Aguiar</Text>
         <Text style={styles.author}>• Gabriela Martins Siqueira</Text>
         <Text style={styles.author}>• Leticia Gonçalves Teixeira</Text>
         <Text style={styles.author}>• Matheus Nunes dos Santos</Text>
