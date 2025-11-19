@@ -72,11 +72,14 @@ export default function QuizResultView() {
       </View>
 
       <TouchableOpacity
-        style={[styles.button, { backgroundColor: "#f953c6" }]}
+        style={styles.backWrapper}
         onPress={() => router.push("../view/quizHubView")}
       >
-        <Text style={styles.buttonText}>Voltar aos Quizzes</Text>
+        <View style={styles.backButton}>
+          <Text style={styles.buttonText}>Voltar aos Quizzes</Text>
+        </View>
       </TouchableOpacity>
+
     </ScrollView>
   );
 }
@@ -85,27 +88,89 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     backgroundColor: "#2c214a",
-    padding: 20,
+    padding: 22,
+    paddingBottom: 60,
     alignItems: "center",
   },
-  title: { color: "#fff", fontSize: 26, fontWeight: "bold", marginTop: 20, textAlign: "center" },
-  subtitle: { color: "#b8f7c8", fontSize: 18, marginTop: 10 },
-  date: { color: "#ccc", marginVertical: 10 },
+
+  /* TÍTULOS */
+  title: {
+    color: "#fff",
+    fontSize: 28,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginTop: 10,
+    marginBottom: 10,
+  },
+
+  subtitle: {
+    color: "#b8f7c8",
+    fontSize: 20,
+    fontWeight: "600",
+    textAlign: "center",
+    marginBottom: 4,
+  },
+
+  date: {
+    color: "#cfcfdd",
+    fontSize: 14,
+    marginBottom: 20,
+    textAlign: "center",
+  },
+
+  /* CARD DE RESPOSTA */
   answerCard: {
     borderWidth: 2,
-    borderRadius: 10,
-    padding: 12,
-    marginBottom: 15,
-    backgroundColor: "#5B4E82",
+    borderRadius: 14,
+    padding: 16,
+    marginBottom: 18,
+    backgroundColor: "#3b3361",
+    width: "100%",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.15,
+    shadowRadius: 4,
+    elevation: 4,
   },
-  question: { color: "#fff", fontSize: 16, marginBottom: 6 },
-  explain: { color: "#ccc", fontSize: 13, marginTop: 4 },
-  button: {
-    marginTop: 20,
-    padding: 14,
-    borderRadius: 10,
-    backgroundColor: "#6C63FF",
-    width: "80%",
+
+  question: {
+    color: "#fff",
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 8,
+    lineHeight: 24,
   },
-  buttonText: { color: "#fff", fontSize: 18, textAlign: "center" },
+
+  explain: {
+    color: "#eaeaea",
+    fontSize: 14,
+    marginTop: 8,
+    lineHeight: 20,
+  },
+
+  /* BOTÃO VOLTAR */
+  backWrapper: {
+    width: "100%",
+    alignItems: "center",
+    marginTop: 30,
+    marginBottom: 35,
+  },
+
+  backButton: {
+    backgroundColor: "#f953c6",
+    paddingVertical: 14,
+    paddingHorizontal: 25,
+    borderRadius: 14,
+    width: "85%",
+    alignItems: "center",
+    justifyContent: "center",
+    elevation: 4,
+  },
+
+  buttonText: {
+    color: "#fff",
+    fontSize: 18,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
 });
